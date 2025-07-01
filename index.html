@@ -3,221 +3,231 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LinkTree WhatsApp</title>
+  <title>LinkTree JFG</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --azul: #007BFF;
+      --laranja: #FFA500;
+      --popup-bg: #ECEFF4;
+      --popup-text: #111;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: url('background.jpg') no-repeat center center / cover;
- no-repeat center center / cover;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px 80px;
-      color: #fff;
-      position: relative;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('bg-dark.jpg') no-repeat center center / cover;
+      color: #ffffff;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 0;
+    body.light-mode {
+      background: url('background.jpg') no-repeat center center / cover;
+      color: #000;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      z-index: 999;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .container {
-      position: relative;
-      z-index: 1;
-      width: 100%;
       max-width: 460px;
-      backdrop-filter: blur(18px);
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-      padding: 30px 24px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 24px;
       text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+    }
+
+    body.light-mode .container {
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .avatar {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      border: 4px solid rgba(255, 255, 255, 0.4);
-      margin-bottom: 15px;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 3px solid var(--laranja);
     }
 
     h1 {
-      font-size: 1.8rem;
-      margin-bottom: 6px;
+      font-size: 1.6rem;
+      margin-bottom: 8px;
     }
 
     p {
-      font-size: 1rem;
-      opacity: 0.85;
-      margin-bottom: 28px;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      opacity: 0.9;
     }
 
     .link {
       display: flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 14px;
-      padding: 12px 16px;
-      margin: 12px 0;
-      color: white;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 10px 0;
       text-decoration: none;
-      transition: transform 0.3s ease, background 0.3s ease;
       cursor: pointer;
+      color: inherit;
+      transition: background 0.2s ease;
     }
 
     .link:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: scale(1.03);
+      background: rgba(255, 255, 255, 0.15);
     }
 
     .link img {
-      width: 32px;
-      height: 32px;
-      margin-right: 12px;
-      border-radius: 6px;
-      background: transparent;
+      width: 26px;
+      height: 26px;
+      margin-right: 10px;
+      border-radius: 4px;
     }
 
-    /* Overlay escurecida com fade */
-.popup-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 15, 30, 0.7);
-  backdrop-filter: blur(4px);
-  z-index: 1000;
-}
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+    }
 
-/* Popup com vidro fosco, borda neon e animação suave */
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 32px;
-  width: 90%;
-  max-width: 420px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
-  color: #fff;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s ease-in-out;
-  z-index: 1001;
-}
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.95);
+      background: var(--popup-bg);
+      color: var(--popup-text);
+      border-radius: 12px;
+      padding: 24px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
 
-/* Ativo: mostra popup */
-.popup.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  pointer-events: auto;
-}
+    .popup.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: auto;
+    }
 
-/* Título */
-.popup h2 {
-  margin-top: 0;
-  font-size: 1.6rem;
-  color: #00fff7;
-  text-shadow: 0 0 5px rgba(0,255,255,0.6);
-}
+    .popup h2 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: var(--laranja);
+    }
 
-/* Texto do popup */
-.popup p {
-  font-size: 1rem;
-  line-height: 1.4;
-  margin-bottom: 1.2em;
-}
+    .popup p {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
 
-/* Botões com efeito neon ao passar o mouse */
-.popup button {
-  margin: 10px 8px 0 8px;
-  padding: 10px 20px;
-  background: linear-gradient(145deg, #00fff7, #0f98ff);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,255,255,0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .popup button {
+      margin: 6px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
 
-.popup button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0,255,255,0.6);
-}
+    #visitLink {
+      background: var(--azul);
+      color: white;
+    }
 
+    #visitLink:hover {
+      background: #0056c7;
+    }
 
     footer.footer {
       text-align: center;
-      color: rgba(255, 255, 255, 0.6);
       font-size: 0.85rem;
-      margin-top: 40px;
-      z-index: 1;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 40px 0 20px;
+    }
+
+    body.light-mode footer.footer {
+      color: rgba(0, 0, 0, 0.5);
     }
 
     footer.footer a {
-      color: rgba(255, 255, 255, 0.8);
+      color: inherit;
       text-decoration: none;
     }
 
     footer.footer a:hover {
       text-decoration: underline;
     }
-    .link {
-  -webkit-tap-highlight-color: transparent; /* Remove destaque azul no mobile */
-  outline: none;                            /* Remove borda azul em desktops */
-}
-
-.link:
-
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
+  <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌙</button>
 
-  <div class="container">
-    <img class="avatar" src="avatar.jpg" alt="Avatar" />
-    <h1>JFG Metais</h1>
-    <p>A JFG Metais é uma empresa que comercializa grapas, mão francesa e acessórios relacionados, como parafusos e buchas, para a construção civil. A empresa tem como objetivo fornecer produtos de qualidade para garantir a segurança e o bom funcionamento das obras.</p>
+  <div class="wrapper">
+    <div class="container">
+      <img class="avatar" src="avatar.jpg" alt="Avatar" />
+      <h1>JFG Metais</h1>
+      <p>A JFG Metais comercializa grapas, mão francesa e acessórios para construção civil. Qualidade garantida com agilidade.</p>
 
-    <div class="link" data-title="@JFGmetais" data-text="Siga a JFG Metais no Instagram e fique por dentro das novidades" data-url="https://www.instagram.com/grapas.jfg.maofrancesa?igsh=MzFmazEwb3BjOTcy">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-      Instagram
-    </div>
+      <div class="link" data-title="@grapas.jfg.maofrancesa" data-text="Siga a JFG Metais no Instagram para novidades" data-url="https://www.instagram.com/grapas.jfg.maofrancesa">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+        Instagram
+      </div>
 
-    <div class="link" data-title="Olá" data-text="Eu sou o Robson Eugênio, responsavel pela Logística da JFG Metais, para saber mais sobre rotas, prazos ou processos internos é só me chamar." data-url="https://wa.me/5511998629882">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111728.png" alt="WhatsApp Projetos">
-      Administrativo 
-    </div>
+      <div class="link" data-title="Olá" data-text="Sou Robson, responsável administrativo. Me chame sobre rotas e processos." data-url="https://wa.me/5511998629882">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111728.png" alt="WhatsApp Administrativo">
+        Administrativo 
+      </div>
 
-    <div class="link" data-title="Oi" data-text="Eu me chamo Regis, cuido da parte financeira da JFG Metais, duvidas sobre boletos em atraso, formas de pagamento, etc, estou aqui.." data-url="https://wa.me/5511971291631">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111728.png" alt="WhatsApp Projetos">
-      Financeiro 
-    </div>
+      <div class="link" data-title="Oi" data-text="Sou a Cida, cuido das finanças. Dúvidas sobre pagamentos, me chame." data-url="https://wa.me/5511971291631">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111728.png" alt="WhatsApp Financeiro">
+        Financeiro 
+      </div>
 
-    <div class="link" data-title="Faala" data-text="Eu sou o André, atuo no e-commercial da JFG Metais, se precisar de orçamentos ou pedidos, é só me chamar aqui." data-url="https://wa.me/5511974177315">
-      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968841.png" alt="WhatsApp Pessoal">
-      E-comercial
+      <div class="link" data-title="Fala" data-text="Sou o André, cuido dos pedidos online. Precisa de orçamento?" data-url="https://wa.me/5511974177315">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968841.png" alt="WhatsApp E-commerce">
+        E-commerce
+      </div>
+
+      <div class="link" data-title="Oi, sou o Administrativo 2" data-text="Sou o segundo contato do setor administrativo. Caso precise de suporte alternativo, estou à disposição!" data-url="https://wa.me/5511999999999">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111728.png" alt="WhatsApp Administrativo 2">
+        Administrativo 2
+      </div>
     </div>
   </div>
 
@@ -227,8 +237,11 @@
     <h2 id="popupTitle"></h2>
     <p id="popupText"></p>
     <button id="visitLink">Acessar</button>
-    <button onclick="closePopup()">Fechar</button>
   </div>
+
+  <footer class="footer">
+    © 2025 André R. dos Santos. <a href="https://www.instagram.com/_andre10k/" target="_blank">Opa!</a>
+  </footer>
 
   <script>
     const links = document.querySelectorAll('.link');
@@ -237,6 +250,7 @@
     const popupTitle = document.getElementById('popupTitle');
     const popupText = document.getElementById('popupText');
     const visitBtn = document.getElementById('visitLink');
+    const themeToggle = document.getElementById('themeToggle');
     let currentUrl = '';
 
     links.forEach(link => {
@@ -260,10 +274,21 @@
     });
 
     overlay.addEventListener('click', closePopup);
-  </script>
 
-  <footer class="footer">
-    © 2025 André R. dos Santos. Todos os direitos reservados. <a href="https://www.instagram.com/_andre10k/profilecard/?igsh=MXhzZHJvam9ib2t3Mw==" target="_blank">Opa!</a>
-  </footer>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      themeToggle.textContent = isLight ? '🌞' : '🌙';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggle.textContent = '🌞';
+      }
+    }
+  </script>
 </body>
 </html>
