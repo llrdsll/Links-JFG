@@ -11,7 +11,6 @@
       --azul: #007BFF;
       --laranja: #FFA500;
       --popup-bg: #ECEFF4;
-      --popup-text: #111;
     }
 
     body {
@@ -25,7 +24,6 @@
 
     body.light-mode {
       background: url('clara.jpg') no-repeat center center / cover;
-      color: #000;
     }
 
     .theme-toggle {
@@ -36,7 +34,7 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: inherit;
+      color: white;
       z-index: 999;
     }
 
@@ -50,18 +48,22 @@
 
     .container {
       max-width: 460px;
-      background: rgba(255, 255, 255, 0.06);
       border-radius: 12px;
       padding: 24px;
       text-align: center;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
       width: 100%;
+      background-color: #0A1E40; /* azul escuro */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      color: white;
     }
 
     body.light-mode .container {
-      background: rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      background-color: #FF8C00; /* laranja forte */
+    }
+
+    .container *,
+    body.light-mode .container * {
+      color: #fff !important;
     }
 
     .avatar {
@@ -70,7 +72,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 16px;
-      border: 3px solid var(--laranja);
+      border: 3px solid white;
     }
 
     h1 {
@@ -81,24 +83,24 @@
     p {
       font-size: 0.95rem;
       margin-bottom: 24px;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     .link {
       display: flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 8px;
       padding: 10px 14px;
       margin: 10px 0;
       text-decoration: none;
       cursor: pointer;
-      color: inherit;
+      color: white;
       transition: background 0.2s ease;
     }
 
     .link:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .link img {
@@ -123,7 +125,7 @@
       left: 50%;
       transform: translate(-50%, -50%) scale(0.95);
       background: var(--popup-bg);
-      color: var(--popup-text);
+      color: #111;
       border-radius: 12px;
       padding: 24px;
       width: 90%;
@@ -179,10 +181,6 @@
       font-size: 0.85rem;
       color: rgba(255, 255, 255, 0.5);
       margin: 40px 0 20px;
-    }
-
-    body.light-mode footer.footer {
-      color: rgba(0, 0, 0, 0.5);
     }
 
     footer.footer a {
