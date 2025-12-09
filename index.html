@@ -3,56 +3,52 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinksJFG</title>
+    <title>LinksJFG Futurista</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-        /* 🎨 Paleta de Cores e Variáveis */
+        /* 🎨 Váriaveis Futuristas */
         :root {
-            --primary-dark: #1E3A8A; 
-            --primary-light: #F97316; 
-            --primary-gradient: linear-gradient(135deg, #F97316 0%, #ea580c 100%); /* Gradiente Moderno */
+            --neon-orange: #F97316;
+            --neon-blue: #0EA5E9;
+            --bg-dark: #09090b;
             
-            --text-dark: #F3F4F6; /* Texto claro (site) */
-            --text-card: #1F2937; /* Texto escuro (dentro do card) */
-            --text-muted: #6B7280; /* Texto secundário */
+            /* Gradiente de energia para botões */
+            --energy-gradient: linear-gradient(135deg, var(--neon-orange), #ef4444);
             
-            --bg-glass: rgba(255, 255, 255, 0.1);
-            --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.2);
-            --shadow-button: 0 4px 15px rgba(249, 115, 22, 0.4);
+            --card-glass-bg: rgba(20, 20, 30, 0.75); /* Vidro escuro */
+            --card-glow: 0 0 25px rgba(249, 115, 22, 0.4), inset 0 0 2px rgba(255,255,255,0.1); /* Brilho Neon */
         }
 
-        /* 🖼️ Configurações Gerais */
         body {
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background: url('escuroo.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: var(--text-dark);
+            color: #E5E7EB;
             transition: all 0.5s ease;
-            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
+        /* Modo claro muda apenas o fundo do site, o card permanece futurista (escuro) */
         body.light-mode {
             background: url('clara.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #111827;
         }
 
-        /* 🌙 Botão de Tema (Flutuante e Moderno) */
+        /* 🌙 Botão de Tema (Estilo Tech) */
         .theme-toggle {
-            position: fixed; top: 20px; left: 20px; font-size: 1.2rem;
-            width: 45px; height: 45px; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(5px); cursor: pointer;
-            color: #fff; z-index: 999;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed; top: 20px; left: 20px;
+            width: 50px; height: 50px; border-radius: 12px;
+            background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px); color: var(--neon-orange);
+            cursor: pointer; z-index: 999; font-size: 1.3rem;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
         }
-        body.light-mode .theme-toggle { background: rgba(0, 0, 0, 0.05); color: #333; border-color: rgba(0,0,0,0.1); }
-        .theme-toggle:hover { transform: scale(1.1); }
+        .theme-toggle:hover { box-shadow: 0 0 20px var(--neon-orange); color: #fff; }
 
         .wrapper {
             display: flex; justify-content: center; align-items: center;
@@ -62,205 +58,192 @@
         /* Container Principal (Glassmorphism) */
         .container {
             max-width: 480px; width: 100%;
-            background: rgba(30, 41, 59, 0.7); 
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.7); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px; padding: 40px 30px;
             text-align: center; 
-            box-shadow: var(--shadow-soft); 
-            transition: all 0.5s ease;
-        }
-        body.light-mode .container { 
-            background: rgba(255, 255, 255, 0.85); 
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         
         .avatar {
-            width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
+            width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
             margin-bottom: 20px; 
-            border: 4px solid rgba(255,255,255,0.2);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 3px solid var(--neon-orange);
+            /* Avatar brilhando */
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
         }
-        body.light-mode .avatar { border-color: white; }
         
-        h1 { font-size: 1.75rem; margin-bottom: 8px; font-weight: 700; letter-spacing: -0.5px; }
-        p { font-size: 0.95rem; margin-bottom: 35px; opacity: 0.9; line-height: 1.6; font-weight: 400; }
+        h1 { font-size: 2rem; margin-bottom: 8px; font-weight: 800; letter-spacing: -1px; color: #fff; text-transform: uppercase; }
+        p { font-size: 1rem; margin-bottom: 35px; opacity: 0.8; line-height: 1.6; }
 
-        /* Lista de Links - Estilo Botão Moderno */
+        /* Links Estilo "Data Pad" */
         .link {
             display: flex; align-items: center; justify-content: flex-start;
-            background: rgba(255, 255, 255, 0.08); 
+            background: rgba(255, 255, 255, 0.03); 
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 14px;
-            padding: 14px 20px; margin: 12px 0; text-decoration: none;
-            font-weight: 600; font-size: 1rem; color: inherit;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 16px;
+            padding: 16px 20px; margin: 12px 0; text-decoration: none;
+            font-weight: 600; font-size: 1.05rem; color: #fff;
+            transition: all 0.3s ease;
+            position: relative; overflow: hidden;
         }
-        body.light-mode .link { background: #fff; border-color: #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         
-        .link:hover { 
-            transform: translateY(-3px) scale(1.02); 
-            background: rgba(255, 255, 255, 0.15); 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        /* Efeito de hover futurista nos links */
+        .link::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.2), transparent);
+            transition: 0.5s;
         }
-        body.light-mode .link:hover { background: #fafafa; }
+        .link:hover::before { left: 100%; }
+        .link:hover { 
+            transform: translateX(5px); 
+            border-color: var(--neon-orange);
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+        }
 
         .link i {
-            width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
-            margin-right: 15px; font-size: 1.2rem; 
-            color: var(--primary-light);
-            background: rgba(249, 115, 22, 0.15); /* Fundo sutil no ícone */
-            border-radius: 8px;
+            width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+            margin-right: 15px; font-size: 1.4rem; color: var(--neon-orange);
             transition: all 0.3s ease;
+            text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
         }
-        .link:hover i { background: var(--primary-light); color: #fff; }
 
         /* ------------------------------------------------ */
-        /* --- POPUP E CARD INTERATIVO MODERNO --- */
+        /* --- 🚀 POPUP E CARD FUTURISTA 🚀 --- */
         /* ------------------------------------------------ */
 
         .popup-overlay {
             display: none; position: fixed; inset: 0;
-            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); z-index: 1000;
-            animation: fadeIn 0.3s ease;
+            background: rgba(0, 0, 0, 0.8); /* Fundo bem escuro */
+            backdrop-filter: blur(10px); z-index: 1000;
         }
         
         .popup {
             position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.95);
-            width: 90%; max-width: 380px; height: auto; max-height: 90vh;
-            /* Container do Popup Transparente/Clean */
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%; max-width: 380px; height: auto; 
             background: transparent; 
             display: flex; flex-direction: column;
             opacity: 0; pointer-events: none;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efeito elástico */
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 1001;
         }
         .popup.show { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
 
-        /* Cabeçalho do Popup (Título fora do card) */
-        .popup-header { 
-            display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 15px; padding: 0 10px; 
-        }
-        .popup-header h2 { 
-            font-size: 1.5rem; font-weight: 700; color: #fff; 
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            margin: 0;
-        }
-        body.light-mode .popup-header h2 { color: #111827; text-shadow: none; }
-        
+        .popup-header { display: flex; justify-content: flex-end; margin-bottom: 10px; }
         .close-btn { 
-            background: rgba(255,255,255,0.2); border: none; cursor: pointer; 
-            width: 36px; height: 36px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; transition: 0.2s;
+            background: rgba(255,255,255,0.1); border: none; cursor: pointer; 
+            width: 40px; height: 40px; border-radius: 50%;
+            color: #fff; transition: 0.3s; font-size: 1.2rem;
         }
-        body.light-mode .close-btn { background: rgba(0,0,0,0.1); color: #333; }
-        .close-btn:hover { background: #fff; color: #000; }
+        .close-btn:hover { background: var(--neon-orange); box-shadow: 0 0 15px var(--neon-orange); transform: rotate(90deg); }
 
         .carousel-container { flex-grow: 1; overflow: visible; position: relative; perspective: 1000px; }
-        .carousel-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .carousel-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .card-item { min-width: 100%; padding: 10px; box-sizing: border-box; display: flex; justify-content: center; }
 
-        /* ✨ DESIGN DO CARD MODERNO ✨ */
+        /* ✨ O NOVO CARD FUTURISTA ✨ */
         .card {
-            background-color: #FFFFFF !important; /* Sempre Branco */
-            color: var(--text-card) !important;
+            /* Fundo de vidro escuro */
+            background: var(--card-glass-bg) !important;
+            /* Desfoque extremo para efeito de vidro fosco */
+            backdrop-filter: blur(25px) saturate(150%); -webkit-backdrop-filter: blur(25px);
             
-            border: none;
-            border-radius: 24px; /* Cantos bem arredondados */
-            padding: 30px 25px;
-            width: 100%; max-width: 320px; 
-            /* Sombra suave e profunda para dar destaque 3D */
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            /* REMOVIDA A BORDA SÓLIDA. Adicionado brilho neon nas bordas. */
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Borda muito sutil para definição */
+            box-shadow: var(--card-glow);
             
-            display: flex; flex-direction: column; align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            color: #FFFFFF !important; /* Texto sempre branco */
+            border-radius: 30px;
+            padding: 40px 30px;
+            width: 100%; max-width: 340px;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            position: relative; overflow: hidden;
         }
 
-        /* Detalhe decorativo no topo do card */
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px;
-            background: var(--primary-gradient);
+        /* Efeito de luz no topo do card */
+        .card::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 50%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, transparent 70%);
+            opacity: 0.5; pointer-events: none;
         }
 
-        /* Ícone em destaque (Círculo) */
+        /* Ícone flutuante e brilhante */
         .card-icon-wrapper {
-            width: 80px; height: 80px;
-            background: #FFF7ED; /* Laranja bem clarinho */
+            width: 90px; height: 90px;
+            /* Fundo transparente, apenas um anel de luz */
+            background: transparent;
+            border: 2px solid rgba(249, 115, 22, 0.3);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.15);
+            margin-bottom: 25px;
+            /* Brilho interno e externo */
+            box-shadow: inset 0 0 15px rgba(249, 115, 22, 0.2), 0 0 20px rgba(249, 115, 22, 0.1);
+            animation: pulseIcon 3s infinite ease-in-out;
         }
-        .card-icon { font-size: 2.2rem; color: var(--primary-light); }
+        .card-icon { 
+            font-size: 2.8rem; color: var(--neon-orange); 
+            /* O ícone em si brilha como luz */
+            text-shadow: 0 0 15px rgba(249, 115, 22, 0.8);
+        }
 
-        .card-title { font-size: 1.4rem; font-weight: 700; margin: 0 0 10px 0; color: #111827; letter-spacing: -0.5px; }
+        .card-title { font-size: 1.6rem; font-weight: 800; margin: 0 0 15px 0; color: #fff; letter-spacing: 0.5px; text-transform: uppercase; }
 
         .card-description {
-            font-size: 0.95rem; line-height: 1.6; color: var(--text-muted) !important;
-            margin-bottom: 25px; text-align: center; font-weight: 500;
+            font-size: 1rem; line-height: 1.7; color: rgba(255, 255, 255, 0.8) !important;
+            margin-bottom: 30px; font-weight: 400; letter-spacing: 0.3px;
         }
 
-        .card-footer { width: 100%; margin-top: auto; border-top: 1px solid #F3F4F6; padding-top: 20px; }
+        .card-footer { width: 100%; margin-top: auto; }
         
+        /* Prompt futurista transparente */
         .whatsapp-prompt {
-            background: #ECFDF5; /* Verde muito suave */
-            border: 1px solid #D1FAE5;
-            color: #047857 !important; /* Verde escuro */
-            padding: 10px 15px; border-radius: 12px;
-            font-size: 0.9rem; font-weight: 600;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            margin-bottom: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: var(--neon-orange) !important;
+            padding: 12px; border-radius: 16px;
+            font-size: 0.95rem; font-weight: 600;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: inset 0 0 10px rgba(249, 115, 22, 0.1);
         }
-        .whatsapp-prompt i { color: #10B981; }
+        .whatsapp-prompt i { text-shadow: 0 0 5px currentColor; }
 
-        /* --- Botões de Navegação (Setas) --- */
+        /* --- Botões de Navegação (Setas de Energia) --- */
         .nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
-            width: 45px; height: 45px; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--primary-light);
-            border: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            cursor: pointer; z-index: 10;
-            font-size: 1.2rem;
-            transition: all 0.2s ease;
+            width: 50px; height: 50px; border-radius: 50%;
+            background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(249, 115, 22, 0.3);
+            color: var(--neon-orange); cursor: pointer; z-index: 10; font-size: 1.2rem;
+            backdrop-filter: blur(5px); transition: all 0.3s ease;
         }
-        .nav-btn:hover { background: #fff; transform: translateY(-50%) scale(1.1); color: #ea580c; }
-        .nav-btn:disabled { opacity: 0; pointer-events: none; }
-        #prevBtn { left: -15px; } 
-        #nextBtn { right: -15px; } 
+        .nav-btn:hover { 
+            background: var(--neon-orange); color: #fff; 
+            box-shadow: 0 0 25px var(--neon-orange); border-color: transparent;
+        }
+        #prevBtn { left: -20px; } #nextBtn { right: -20px; } 
 
-        /* --- Botão Principal (Gradiente) --- */
-        .carousel-nav { margin-top: 25px; text-align: center; }
+        /* --- Botão Principal (Propulsor de Plasma) --- */
+        .carousel-nav { margin-top: 35px; text-align: center; }
         #visitLink {
-            background: var(--primary-gradient);
+            background: var(--energy-gradient);
             color: white;
-            padding: 14px 40px; border-radius: 50px; /* Pílula */
-            font-weight: 600; font-size: 1.05rem;
+            padding: 16px 50px; border-radius: 50px;
+            font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
             text-decoration: none; display: inline-block;
-            box-shadow: var(--shadow-button);
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
+            /* Brilho intenso no botão */
+            box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
+            transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-        #visitLink:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5); 
-            filter: brightness(1.1);
+        #visitLink::after {
+            content: ''; position: absolute; top: -50%; left: -60%; width: 20%; height: 200%;
+            background: rgba(255,255,255,0.4); transform: rotate(25deg); transition: 0.5s;
         }
+        #visitLink:hover::after { left: 130%; }
+        #visitLink:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(249, 115, 22, 0.8); filter: brightness(1.2); }
 
-        footer.footer { 
-            text-align: center; font-size: 0.85rem; 
-            color: rgba(255, 255, 255, 0.6); margin-top: 40px; 
-        }
-        body.light-mode footer.footer { color: rgba(0,0,0,0.5); }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        footer.footer { text-align: center; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); margin-top: 50px; }
+        @keyframes pulseIcon { 0%, 100% { box-shadow: inset 0 0 15px rgba(249, 115, 22, 0.2), 0 0 20px rgba(249, 115, 22, 0.1); } 50% { box-shadow: inset 0 0 25px rgba(249, 115, 22, 0.4), 0 0 35px rgba(249, 115, 22, 0.3); } }
     </style>
 </head>
 <body>
@@ -270,21 +253,21 @@
         <div class="container">
             <img class="avatar" src="avatar.jpg" alt="Avatar" />
             <h1>JFG Metais</h1>
-            <p>Soluções em fixação para construtoras e marmorarias.</p>
+            <p>Soluções avançadas em fixação para o futuro da construção.</p>
 
-            <a class="link" data-title="Site Oficial" data-text="Explore nosso portfólio completo e solicite orçamentos diretamente pelo site." data-url="https://jfgmetais.com.br/" data-icon="fas fa-globe" data-contact-type="web" data-index="0">
+            <a class="link" data-title="Site Oficial" data-text="Explore nosso portfólio digital completo e solicite orçamentos via nossa plataforma." data-url="https://jfgmetais.com.br/" data-icon="fas fa-globe" data-contact-type="web" data-index="0">
                 <i class="fas fa-globe"></i> Site
             </a>
-            <a class="link" data-title="Jessé Ferreira" data-text="Responsável administrativo. Fale comigo sobre processos, documentação e parcerias." data-url="http://wa.me/5511942147315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="1">
+            <a class="link" data-title="Jessé Ferreira" data-text="Administrativo. Conecte-se para alinhar processos internos e documentação estratégica." data-url="http://wa.me/5511942147315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="1">
                 <i class="fab fa-whatsapp"></i> Administrativo
             </a>
-            <a class="link" data-title="Duana Kelly" data-text="Setor de Vendas. Cotações, pedidos e dúvidas comerciais, estou à disposição." data-url="http://wa.me/5511974177315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="2">
+            <a class="link" data-title="Duana Kelly" data-text="Central de Vendas. Cotações em tempo real e rastreamento de pedidos." data-url="http://wa.me/5511974177315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="2">
                 <i class="fab fa-whatsapp"></i> Vendas
             </a>
-            <a class="link" data-title="André Santos" data-text="Orçamentos especiais e negociações diretas. Garanta o melhor preço aqui." data-url="https://wa.me/5511932875887" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="3">
+            <a class="link" data-title="André Santos" data-text="Negociações e Orçamentos. Canal direto para condições comerciais exclusivas." data-url="https://wa.me/5511932875887" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="3">
                 <i class="fab fa-whatsapp"></i> Orçamentos
             </a>
-            <a class="link" data-title="Róbson Eugênio" data-text="Logística e Entregas. Rastreio, rotas e conferência de material." data-url="http://wa.me/5511998629882" data-icon="fas fa-truck-fast" data-contact-type="whatsapp" data-index="4">
+            <a class="link" data-title="Róbson Eugênio" data-text="Operações Logísticas. Informações precisas sobre rotas, estoque e conferência." data-url="http://wa.me/5511998629882" data-icon="fas fa-truck-fast" data-contact-type="whatsapp" data-index="4">
                 <i class="fas fa-truck-fast"></i> Logístico
             </a>
         </div>
@@ -293,149 +276,41 @@
     <div class="popup-overlay" id="overlay"></div>
     <div class="popup" id="popup">
         <div class="popup-header">
-            <h2 id="popupTitle">Contato</h2>
             <button class="close-btn" onclick="closePopup()">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-
         <div class="carousel-container">
             <div class="carousel-track" id="carouselTrack"></div>
             <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
             <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
         </div>
-
         <div class="carousel-nav">
-            <a id="visitLink" href="#" target="_blank">Acessar</a>
+            <a id="visitLink" href="#" target="_blank">Inicializar</a>
         </div>
     </div>
 
-    <footer class="footer">
-        © 2025 <a href="https://wa.me/5511932875887" target="_blank" style="color:inherit; font-weight:600;">André R. dos Santos</a>
-    </footer>
+    <footer class="footer">© 2025 André R. dos Santos | Interface v2.5</footer>
 
     <script>
-        const links = document.querySelectorAll('.link');
-        const popup = document.getElementById('popup');
-        const overlay = document.getElementById('overlay');
-        const carouselTrack = document.getElementById('carouselTrack');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const visitBtn = document.getElementById('visitLink');
-        const themeToggle = document.getElementById('themeToggle');
-
-        let currentSlide = 0;
-        const linkData = [];
-        let totalSlides = 0;
-
-        links.forEach((link, index) => {
-            linkData.push({
-                title: link.dataset.title,
-                text: link.dataset.text,
-                url: link.dataset.url,
-                icon: link.dataset.icon || link.querySelector('i').className,
-                type: link.dataset.contactType,
-                index: index
-            });
-        });
-        totalSlides = linkData.length;
-
+        const links = document.querySelectorAll('.link'); const popup = document.getElementById('popup'); const overlay = document.getElementById('overlay'); const carouselTrack = document.getElementById('carouselTrack'); const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const visitBtn = document.getElementById('visitLink'); const themeToggle = document.getElementById('themeToggle'); let currentSlide = 0; const linkData = []; let totalSlides = 0;
+        links.forEach((link, index) => { linkData.push({ title: link.dataset.title, text: link.dataset.text, url: link.dataset.url, icon: link.dataset.icon || link.querySelector('i').className, type: link.dataset.contactType, index: index }); }); totalSlides = linkData.length;
         function createCardHTML(data) {
-            let promptHtml = '';
-            let visitText = 'Acessar';
-            
-            if (data.type === 'whatsapp') {
-                promptHtml = `<div class="whatsapp-prompt"><i class="fab fa-whatsapp"></i> Iniciar conversa</div>`;
-                visitText = 'Enviar Mensagem';
-            } else if (data.type === 'web') {
-                 promptHtml = `<div class="whatsapp-prompt" style="color:#1E3A8A !important; background:#EFF6FF; border-color:#DBEAFE;"><i class="fas fa-external-link-alt" style="color:#2563EB;"></i> Visitar Página</div>`;
-                visitText = 'Acessar Site';
-            }
-
-            return `
-                <div class="card-item">
-                    <div class="card">
-                        <div class="card-icon-wrapper">
-                            <i class="${data.icon} card-icon"></i>
-                        </div>
-                        <h3 class="card-title">${data.title}</h3>
-                        <p class="card-description">${data.text}</p>
-                        <div class="card-footer">
-                            ${promptHtml}
-                        </div>
-                    </div>
-                </div>
-            `;
+            let promptHtml = '', visitText = 'Acessar';
+            if (data.type === 'whatsapp') { promptHtml = `<div class="whatsapp-prompt"><i class="fab fa-whatsapp"></i> Iniciar Transmissão</div>`; visitText = 'Conectar via WhatsApp'; } 
+            else if (data.type === 'web') { promptHtml = `<div class="whatsapp-prompt" style="color:var(--neon-blue) !important; border-color:var(--neon-blue);"><i class="fas fa-external-link-alt" style="text-shadow: 0 0 5px var(--neon-blue);"></i> Navegar no Portal</div>`; visitText = 'Acessar Portal'; }
+            return `<div class="card-item"><div class="card"><div class="card-icon-wrapper"><i class="${data.icon} card-icon"></i></div><h3 class="card-title">${data.title}</h3><p class="card-description">${data.text}</p><div class="card-footer">${promptHtml}</div></div></div>`;
         }
-
-        function renderCarousel() {
-            carouselTrack.innerHTML = linkData.map(createCardHTML).join('');
-        }
-
-        function moveToSlide(index) {
-            currentSlide = index;
-            const offset = -currentSlide * 100;
-            carouselTrack.style.transform = `translateX(${offset}%)`;
-            updateNavButtons();
-            updateVisitLink();
-        }
-
-        function updateNavButtons() {
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === totalSlides - 1;
-            prevBtn.style.opacity = currentSlide === 0 ? '0' : '1';
-            nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0' : '1';
-            prevBtn.style.pointerEvents = currentSlide === 0 ? 'none' : 'auto';
-            nextBtn.style.pointerEvents = currentSlide === totalSlides - 1 ? 'none' : 'auto';
-        }
-
-        function updateVisitLink() {
-            const currentData = linkData[currentSlide];
-            if (currentData) {
-                visitBtn.href = currentData.url;
-                visitBtn.style.display = 'inline-block';
-                if (currentData.type === 'whatsapp') visitBtn.textContent = 'Chamar no WhatsApp';
-                else if (currentData.type === 'web') visitBtn.textContent = 'Visitar Site Oficial';
-                else visitBtn.textContent = 'Acessar Link';
-            } else {
-                visitBtn.style.display = 'none';
-            }
-        }
-
-        links.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (carouselTrack.innerHTML === '') renderCarousel();
-                moveToSlide(parseInt(link.dataset.index));
-                popup.classList.add('show');
-                overlay.style.display = 'block';
-            });
-        });
-
-        prevBtn.addEventListener('click', () => { if (currentSlide > 0) moveToSlide(currentSlide - 1); });
-        nextBtn.addEventListener('click', () => { if (currentSlide < totalSlides - 1) moveToSlide(currentSlide + 1); });
-
-        function closePopup() {
-            popup.classList.remove('show');
-            setTimeout(() => { overlay.style.display = 'none'; }, 300);
-        }
-
+        function renderCarousel() { carouselTrack.innerHTML = linkData.map(createCardHTML).join(''); }
+        function moveToSlide(index) { currentSlide = index; carouselTrack.style.transform = `translateX(${-currentSlide * 100}%)`; updateNavButtons(); updateVisitLink(); }
+        function updateNavButtons() { prevBtn.disabled = currentSlide === 0; nextBtn.disabled = currentSlide === totalSlides - 1; prevBtn.style.opacity = currentSlide === 0 ? '0' : '1'; nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0' : '1'; prevBtn.style.pointerEvents = currentSlide === 0 ? 'none' : 'auto'; nextBtn.style.pointerEvents = currentSlide === totalSlides - 1 ? 'none' : 'auto'; }
+        function updateVisitLink() { const currentData = linkData[currentSlide]; if (currentData) { visitBtn.href = currentData.url; visitBtn.style.display = 'inline-block'; if (currentData.type === 'whatsapp') visitBtn.textContent = 'Conectar via WhatsApp'; else if (currentData.type === 'web') visitBtn.textContent = 'Acessar Portal'; else visitBtn.textContent = 'Inicializar Link'; } else { visitBtn.style.display = 'none'; } }
+        links.forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); if (carouselTrack.innerHTML === '') renderCarousel(); moveToSlide(parseInt(link.dataset.index)); popup.classList.add('show'); overlay.style.display = 'block'; }); });
+        prevBtn.addEventListener('click', () => { if (currentSlide > 0) moveToSlide(currentSlide - 1); }); nextBtn.addEventListener('click', () => { if (currentSlide < totalSlides - 1) moveToSlide(currentSlide + 1); });
+        function closePopup() { popup.classList.remove('show'); setTimeout(() => { overlay.style.display = 'none'; }, 300); }
         overlay.addEventListener('click', closePopup);
-
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            const isLight = document.body.classList.contains('light-mode');
-            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        }
-
-        window.onload = () => {
-            const saved = localStorage.getItem('theme');
-            let isLight = saved === 'light';
-            if (isLight) document.body.classList.add('light-mode');
-            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙';
-            renderCarousel();
-        }
+        function toggleTheme() { document.body.classList.toggle('light-mode'); const isLight = document.body.classList.contains('light-mode'); themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙'; localStorage.setItem('theme', isLight ? 'light' : 'dark'); }
+        window.onload = () => { const saved = localStorage.getItem('theme'); let isLight = saved === 'light'; if (isLight) document.body.classList.add('light-mode'); themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙'; renderCarousel(); }
     </script>
 </body>
 </html>
