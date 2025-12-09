@@ -29,6 +29,7 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
+            /* Lembre-se de ter as imagens 'escuroo.jpg' e 'clara.jpg' no diretório */
             background: url('escuroo.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-dark);
@@ -145,7 +146,8 @@
             display: flex; flex-direction: column; justify-content: space-between;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
-            color: var(--text-dark); /* Texto CLARO no modo escuro (base) */
+            /* 💡 CORREÇÃO APLICADA: Forçar BRANCO no card base para garantir legibilidade no dark mode */
+            color: #FFFFFF; 
         }
 
         body.light-mode .card {
@@ -179,7 +181,7 @@
             color: inherit; 
         }
 
-        /* ➡️ Descrição: CORREÇÃO DEFINITIVA DE COR */
+        /* ➡️ Descrição: Override com !important mantido para segurança máxima de contraste */
         .card-description {
             font-size: 0.9rem;
             line-height: 1.5;
@@ -306,7 +308,7 @@
 
         <div class="carousel-container">
             <div class="carousel-track" id="carouselTrack">
-                </div>
+            </div>
             <button class="nav-btn" id="prevBtn">
                 <i class="fas fa-chevron-left"></i>
             </button>
@@ -463,7 +465,7 @@
             }
         });
 
-        // 6. Funções de popup e tema (mantidas)
+        // 6. Funções de popup e tema
         function closePopup() {
             popup.classList.remove('show');
             setTimeout(() => {
@@ -476,17 +478,30 @@
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
             const isLight = document.body.classList.contains('light-mode');
-            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙';
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
         }
 
         window.onload = () => {
             const saved = localStorage.getItem('theme');
-            const isLight = saved === 'light';
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Define o tema inicial baseado no localStorage ou preferência do sistema
+            let isLight = false;
+            if (saved) {
+                 isLight = saved === 'light';
+            } else if (!prefersDark) {
+                // Se não houver preferência salva e o sistema não preferir escuro, assume-se light (opcional)
+                isLight = false; // Mantenha false para dark como padrão, ou true para light
+            }
+
             if (isLight) {
                 document.body.classList.add('light-mode');
             }
-            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙';
+            
+             // Renderiza o carrossel no carregamento para que a estrutura esteja pronta
+             renderCarousel();
         }
     </script>
 </body>
