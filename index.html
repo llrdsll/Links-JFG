@@ -41,7 +41,7 @@
             color: var(--text-light);
         }
 
-        /* 🌙 Alternador de Tema e Container Principal (Mantido) */
+        /* 🌙 Alternador de Tema e Container Principal */
         .theme-toggle {
             position: fixed; top: 16px; left: 16px; font-size: 1.2rem;
             width: 40px; height: 40px; border-radius: 50%;
@@ -135,8 +135,7 @@
         .card-item { min-width: 100%; padding: 0; box-sizing: border-box; display: flex; justify-content: center; align-items: center; text-align: center; }
 
         .card {
-            /* Fundo mais escuro/sólido no modo escuro */
-            background-color: rgba(0, 0, 0, 0.7); 
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo mais escuro (sólido) */
             border: 2px solid var(--primary-light);
             border-radius: 16px;
             padding: 20px; 
@@ -169,14 +168,14 @@
 
         .card-icon {
             font-size: 2.5rem;
-            color: inherit; /* Garante que o ícone tenha a cor correta do card-header */
+            color: inherit; 
         }
 
         .card-title {
             font-size: 1.2rem;
             font-weight: 700;
             margin: 0;
-            color: inherit; /* Herda a cor do card-header (primary-light/dark) */
+            color: inherit; 
         }
 
         /* ➡️ Descrição: Máxima Legibilidade */
@@ -184,7 +183,7 @@
             font-size: 0.9rem;
             line-height: 1.5;
             opacity: 1; 
-            color: inherit; /* HERDA CORRETO: (Claro no escuro, escuro no claro) */
+            color: inherit; /* Herda a cor do .card (CLARO no escuro, ESCURO no claro) */
             text-align: left; 
             padding: 0 5px;
             margin-bottom: 20px;
@@ -210,22 +209,25 @@
         body.light-mode .card-details p { color: var(--primary-dark); }
 
         .whatsapp-prompt {
-            /* Fundo do prompt ajustado para contraste */
-            background: rgba(255, 255, 255, 0.15);
+            /* ⬅️ CORREÇÃO CRÍTICA: Fundo escuro/sólido no modo escuro para garantir contraste */
+            background: rgba(0, 0, 0, 0.4); 
             border-radius: 8px;
             padding: 8px;
             margin-top: 8px;
-            color: inherit; /* **CRÍTICO:** Herda a cor do texto do card para ser visível */
+            color: inherit; /* Herda a cor do texto CLARO do card */
             font-size: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
-        body.light-mode .whatsapp-prompt { background: rgba(0, 0, 0, 0.05); }
+        body.light-mode .whatsapp-prompt { 
+            background: rgba(0, 0, 0, 0.05); /* Fundo claro no modo claro */
+            color: inherit; /* Herda a cor do texto ESCURO do card */
+        }
         .whatsapp-prompt i { color: #25D366; } 
 
-        /* --- Setas Laterais (Mantido) --- */
+        /* --- Setas Laterais (Mantido: Quase transparentes) --- */
         .nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.05); color: var(--primary-light); 
@@ -241,7 +243,7 @@
         #prevBtn { left: -10px; } 
         #nextBtn { right: -10px; } 
 
-        /* --- Botão Acessar Link (Mantido) --- */
+        /* --- Botão Acessar Link */
         .carousel-nav { display: flex; justify-content: center; align-items: center; margin-top: 15px; }
         #visitLink {
             background: var(--primary-light); color: white;
