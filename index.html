@@ -41,7 +41,7 @@
             color: var(--text-light);
         }
 
-        /* 🌙 Alternador de Tema */
+        /* 🌙 Alternador de Tema (Omitido para brevidade, mantido no código final) */
         .theme-toggle {
             position: fixed; top: 16px; left: 16px; font-size: 1.2rem;
             width: 40px; height: 40px; border-radius: 50%;
@@ -58,7 +58,7 @@
             min-height: 100vh; padding: 40px 20px;
         }
 
-        /* 📦 Container Principal */
+        /* 📦 Container Principal (Omitido para brevidade, mantido no código final) */
         .container {
             max-width: 480px; border-radius: 16px; padding: 30px;
             text-align: center; width: 100%;
@@ -67,41 +67,24 @@
         }
         body.light-mode .container { background-color: var(--container-light); box-shadow: var(--shadow-light); }
         .container * { color: inherit; }
-
-        .avatar {
-            width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
-            margin-bottom: 20px; border: 4px solid var(--primary-light);
-            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1); transition: border-color 0.3s ease;
-        }
+        /* Avatares, Títulos e Links (Omitidos para brevidade) */
+        .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid var(--primary-light); box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1); transition: border-color 0.3s ease; }
         body.light-mode .avatar { border: 4px solid var(--primary-dark); }
-
         h1 { font-size: 1.8rem; margin-bottom: 4px; font-weight: 700; color: var(--primary-light); transition: color 0.3s ease; }
         body.light-mode h1 { color: var(--primary-dark); }
         p { font-size: 1rem; margin-bottom: 30px; opacity: 0.9; line-height: 1.5; }
-
-        /* 🔗 Links/Botões de Ação */
-        .link {
-            display: flex; align-items: center; justify-content: flex-start;
-            background-color: var(--link-bg-dark); border-radius: 10px;
-            padding: 12px 18px; margin: 14px 0; text-decoration: none;
-            font-weight: 600; font-size: 1.05rem; color: var(--text-dark);
-            transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+        .link { display: flex; align-items: center; justify-content: flex-start; background-color: var(--link-bg-dark); border-radius: 10px; padding: 12px 18px; margin: 14px 0; text-decoration: none; font-weight: 600; font-size: 1.05rem; color: var(--text-dark); transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
         body.light-mode .link { background-color: var(--link-bg-light); color: var(--text-light); }
         .link:hover { background-color: var(--link-hover-dark); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); }
         body.light-mode .link:hover { background-color: var(--link-hover-light); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); }
-        .link img { display: none; }
-        .link i {
-            width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
-            margin-right: 15px; font-size: 1.3rem; color: var(--primary-light); transition: color 0.3s ease;
-        }
+        .link i { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 1.3rem; color: var(--primary-light); transition: color 0.3s ease; }
         body.light-mode .link i { color: var(--primary-dark); }
         .link:hover i { color: #fff; }
         body.light-mode .link:hover i { color: var(--primary-light); }
 
 
         /* ------------------------------------------------ */
-        /* --- 🆕 NOVO DESIGN: POPUP CARROSSEL COMPACTO --- */
+        /* --- 🆕 POPUP CARROSSEL INTERATIVO E DETALHADO --- */
         /* ------------------------------------------------ */
 
         .popup-overlay {
@@ -112,165 +95,171 @@
         .popup {
             position: fixed; top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0.9);
-            width: 90%; max-width: 400px; /* ⬅️ Largura reduzida para o carrossel compacto */
-            height: 90%; max-height: 550px; /* Altura um pouco maior para o card YGO */
-            
-            /* Glassmorphism de Fundo */
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px) saturate(180%);
+            width: 90%; max-width: 400px;
+            height: 90%; max-height: 580px; /* Altura ligeiramente aumentada */
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            
-            color: var(--text-dark);
-            border-radius: 20px;
+            color: var(--text-dark); border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            padding: 20px; /* Padding reduzido */
-            
+            padding: 20px;
             display: flex; flex-direction: column;
             opacity: 0; pointer-events: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1001;
         }
-        body.light-mode .popup { background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(0, 0, 0, 0.05); color: var(--text-light); }
+        body.light-mode .popup { background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(0, 0, 0, 0.05); color: var(--text-light); }
         .popup.show { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
 
-        /* --- Cabeçalho e Fechar --- */
-        .popup-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 10px; padding: 0 10px;
-        }
-        .popup-header h2 {
-            font-size: 1.4rem; font-weight: 700;
-            color: var(--primary-light); margin: 0;
-        }
+        /* --- Cabeçalho --- */
+        .popup-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 0 5px; }
+        .popup-header h2 { font-size: 1.4rem; font-weight: 700; color: var(--primary-light); margin: 0; }
         body.light-mode .popup-header h2 { color: var(--primary-dark); }
-        .close-btn {
-            background: none; border: none; cursor: pointer;
-            font-size: 1.2rem; color: var(--text-dark);
-        }
+        .close-btn { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--text-dark); opacity: 0.7; }
         body.light-mode .close-btn { color: var(--text-light); }
-        .close-btn:hover { color: var(--primary-light); transform: rotate(90deg); }
+        .close-btn:hover { color: var(--primary-light); opacity: 1; transform: rotate(90deg); }
 
         /* --- Carrossel Slider Container --- */
         .carousel-container {
-            flex-grow: 1;
-            overflow: hidden;
-            position: relative;
-            padding: 0 30px; /* ⬅️ Espaço para as setas laterais */
+            flex-grow: 1; overflow: hidden; position: relative;
+            padding: 0 5px; /* Reduz o padding para as setas ficarem mais próximas da borda do popup */
         }
-        
-        .carousel-track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.4s ease-in-out;
-        }
+        .carousel-track { display: flex; height: 100%; transition: transform 0.4s ease-in-out; }
 
-        /* --- Card de Conteúdo Compacto --- */
-        .card-item {
-            min-width: 100%;
-            padding: 0;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+        /* --- Card de Conteúdo Compacto (Mais Detalhado) --- */
+        .card-item { min-width: 100%; padding: 0; box-sizing: border-box; display: flex; justify-content: center; align-items: center; text-align: center; }
 
         .card {
-            background-color: rgba(0, 0, 0, 0.4); /* ⬅️ Fundo mais escuro para parecer sólido */
-            border: 2px solid var(--primary-light); /* Borda de destaque */
-            border-radius: 16px; /* Borda mais arredondada */
-            padding: 30px 25px;
-            max-width: 300px; /* ⬅️ Largura definida, como um card YGO */
-            height: 450px; /* ⬅️ Altura definida para o formato de carta */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Espaçamento entre icon/texto/botão */
+            background-color: rgba(0, 0, 0, 0.4); 
+            /* Borda do card agora usa gradiente ou dupla linha para detalhe */
+            border: 2px solid var(--primary-light);
+            border-radius: 16px;
+            padding: 20px; /* Padding reduzido para mais espaço interno */
+            max-width: 320px; /* Largura levemente maior */
+            height: 480px; /* Altura ajustada */
+            display: flex; flex-direction: column; justify-content: space-between;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
         }
 
         body.light-mode .card {
-            background-color: #FAFAFA; /* Branco no modo claro */
+            background-color: #FAFAFA;
             border: 2px solid var(--primary-dark);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .card-icon {
-            font-size: 3.5rem;
-            color: var(--primary-light);
+        .card-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
             margin-bottom: 15px;
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
+        body.light-mode .card-header { border-bottom: 1px solid rgba(0, 0, 0, 0.1); color: var(--primary-dark); }
 
-        .card-content {
-            flex-grow: 1;
+        .card-icon {
+            font-size: 2.5rem;
         }
 
         .card-title {
             font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin: 0;
             color: inherit;
         }
 
+        /* ➡️ Legibilidade: Aumenta o contraste do texto da descrição */
         .card-description {
             font-size: 0.9rem;
-            line-height: 1.4;
-            opacity: 0.9;
-            color: inherit;
+            line-height: 1.5;
+            opacity: 1; /* Opacidade total para máxima legibilidade */
+            color: var(--text-dark); 
+            text-align: left; /* Alinhamento à esquerda para leitura */
+            padding: 0 5px;
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
 
-        /* --- Navegação Lateral Transparente --- */
+        body.light-mode .card-description { color: var(--text-light); }
+
+        /* --- Seção de Detalhes Interativos --- */
+        .card-details {
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode .card-details { border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+        .card-details p {
+            font-size: 0.8rem;
+            font-weight: 600;
+            opacity: 0.8;
+            margin-bottom: 5px;
+            color: var(--primary-light); /* Destaque no nome da seção */
+        }
+        body.light-mode .card-details p { color: var(--primary-dark); }
+
+        .whatsapp-prompt {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 8px;
+            margin-top: 8px;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        body.light-mode .whatsapp-prompt { background: rgba(0, 0, 0, 0.05); color: var(--text-light); }
+        .whatsapp-prompt i { color: #25D366; } /* Cor do WhatsApp */
+
+        /* --- Setas Laterais (Atenção às setinhas) --- */
         .nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1); /* ⬅️ Quase transparente */
-            color: white;
-            border: none;
+            background: rgba(255, 255, 255, 0.05); /* Mais transparente ainda */
+            color: var(--primary-light); /* Seta com cor de destaque */
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            font-size: 1rem;
+            width: 40px; /* Levemente maiores */
+            height: 40px;
+            font-size: 1.1rem;
             cursor: pointer;
             z-index: 10;
-            transition: background 0.2s ease, opacity 0.2s ease;
-            opacity: 0.4; /* ⬅️ Opacidade inicial baixa */
+            transition: all 0.3s ease;
+            opacity: 0.3; /* Opacidade inicial baixa */
         }
         
         .nav-btn:hover {
-            opacity: 1; /* ⬅️ Opacidade total no hover */
-            background: rgba(249, 115, 22, 0.8); /* Fundo colorido sutil no hover */
+            opacity: 1;
+            background: rgba(249, 115, 22, 0.8);
+            color: white; /* Cor da seta muda no hover */
+            border-color: var(--primary-light);
         }
 
         .nav-btn:disabled {
-            display: none; /* Esconde se desabilitado */
+            display: none;
         }
 
-        #prevBtn { left: 5px; } /* Posição na esquerda */
-        #nextBtn { right: 5px; } /* Posição na direita */
+        #prevBtn { left: -10px; } /* Posição fora do padding */
+        #nextBtn { right: -10px; } /* Posição fora do padding */
 
-
-        /* Ocultando a navegação inferior (botões de chevron) */
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 15px;
-        }
-
+        /* --- Botão Acessar Link --- */
+        .carousel-nav { display: flex; justify-content: center; align-items: center; margin-top: 15px; }
         #visitLink {
             background: var(--primary-light); color: white;
-            padding: 10px 20px; border-radius: 8px; font-weight: 600;
+            padding: 12px 30px; border-radius: 10px; font-weight: 700;
             text-decoration: none; display: inline-block; transition: background 0.2s ease;
         }
-        #visitLink:hover { background: #D96010; }
+        #visitLink:hover { background: #D96010; transform: translateY(-1px); }
 
-
-        /* Rodapé */
-        footer.footer {
-            text-align: center; font-size: 0.85rem; color: rgba(255, 255, 255, 0.4);
-            margin: 40px 0 20px; transition: color 0.3s ease;
-        }
+        /* Rodapé (Omitido para brevidade) */
+        footer.footer { text-align: center; font-size: 0.85rem; color: rgba(255, 255, 255, 0.4); margin: 40px 0 20px; transition: color 0.3s ease; }
         body.light-mode footer.footer { color: rgba(0, 0, 0, 0.4); }
         footer.footer a { color: inherit; text-decoration: none; font-weight: 600; }
         footer.footer a:hover { text-decoration: underline; }
@@ -285,25 +274,20 @@
             <h1>JFG Metais</h1>
             <p>A JFG Metais comercializa grapas, mão francesa e suportes para fixação. Construtoras e Marmorarias, fiquem à vontade para nos chamar!</p>
 
-            <a class="link" data-title="Site" data-text="Acesse nosso site. Por lá você consegue fazer um breve orçamento das peças disponíveis em estoque." data-url="https://jfgmetais.com.br/" data-icon="fas fa-globe" data-index="0">
+            <a class="link" data-title="Site Oficial" data-text="Acesse nosso site. Por lá você consegue fazer um breve orçamento das peças disponíveis em estoque. É o canal ideal para ver o portfólio completo." data-url="https://jfgmetais.com.br/" data-icon="fas fa-globe" data-contact-type="web">
                 <i class="fas fa-globe"></i> Site
-                <img src="placeholder.png" alt="Site" style="display: none;">
             </a>
-            <a class="link" data-title="Jessé Ferreira" data-text="Sou o responsável administrativo da JFG Metais. Me chame para falar de processos internos." data-url="http://wa.me/5511942147315" data-icon="fab fa-whatsapp" data-index="1">
+            <a class="link" data-title="Jessé Ferreira" data-text="Sou o responsável administrativo da JFG Metais. Me chame para falar de processos internos, documentação e organização da empresa." data-url="http://wa.me/5511942147315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp">
                 <i class="fab fa-whatsapp"></i> Administrativo
-                <img src="placeholder.png" alt="WhatsApp Administrativo" style="display: none;">
             </a>
-            <a class="link" data-title="Duana Kelly" data-text="Cuido das vendas. Dúvidas sobre pedidos é só me chamar." data-url="http://wa.me/5511974177315" data-icon="fab fa-whatsapp" data-index="2">
+            <a class="link" data-title="Duana Kelly" data-text="Cuido das vendas. Dúvidas sobre pedidos, acompanhamento de cotações e prazos de entrega, é só me chamar." data-url="http://wa.me/5511974177315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp">
                 <i class="fab fa-whatsapp"></i> Vendas
-                <img src="placeholder.png" alt="WhatsApp Vendas" style="display: none;">
             </a>
-            <a class="link" data-title="André Santos" data-text="Cuido dos orçamentos. Vamos negociar? Me envie sua solicitação ou ordem de compra." data-url="https://wa.me/5511932875887" data-icon="fab fa-whatsapp" data-index="3">
+            <a class="link" data-title="André Santos" data-text="Cuido dos orçamentos. Vamos negociar? Me envie sua solicitação ou ordem de compra. O melhor preço está aqui!" data-url="https://wa.me/5511932875887" data-icon="fab fa-whatsapp" data-contact-type="whatsapp">
                 <i class="fab fa-whatsapp"></i> Orçamentos
-                <img src="placeholder.png" alt="WhatsApp Orçamentos" style="display: none;">
             </a>
-            <a class="link" data-title="Róbson Eugênio" data-text="Sou do setor Logístico. Precisando de informações sobre rotas, estoque, prazo de entregas... me chame aqui." data-url="http://wa.me/5511998629882" data-icon="fas fa-truck-fast" data-index="4">
+            <a class="link" data-title="Róbson Eugênio" data-text="Sou do setor Logístico. Precisando de informações sobre rotas, estoque, prazo de entregas e conferência, me chame aqui." data-url="http://wa.me/5511998629882" data-icon="fas fa-truck-fast" data-contact-type="whatsapp">
                 <i class="fas fa-truck-fast"></i> Logístico
-                <img src="placeholder.png" alt="WhatsApp Logístico" style="display: none;">
             </a>
         </div>
     </div>
@@ -311,7 +295,7 @@
     <div class="popup-overlay" id="overlay"></div>
     <div class="popup" id="popup">
         <div class="popup-header">
-            <h2 id="popupTitle">Detalhes e Contatos</h2>
+            <h2 id="popupTitle">Detalhes do Contato</h2>
             <button class="close-btn" onclick="closePopup()">
                 <i class="fas fa-times"></i>
             </button>
@@ -351,39 +335,68 @@
         const linkData = [];
         let totalSlides = 0;
 
-        // 1. Coleta os dados de todos os links
+        // 1. Coleta os dados de todos os links (Incluindo data-contact-type)
         links.forEach((link, index) => {
             linkData.push({
                 title: link.dataset.title,
                 text: link.dataset.text,
                 url: link.dataset.url,
                 icon: link.dataset.icon || link.querySelector('i').className,
+                type: link.dataset.contactType, // Novo dado
                 index: index
             });
         });
         totalSlides = linkData.length;
 
-        // 2. Função para criar o HTML do Card
+        // 2. Função para criar o HTML do Card (Detalhado e Interativo)
         function createCardHTML(data) {
+            let promptHtml = '';
+            let visitText = 'Acessar Link';
+            
+            if (data.type === 'whatsapp') {
+                promptHtml = `
+                    <div class="whatsapp-prompt">
+                        <i class="fab fa-whatsapp"></i> 
+                        Envie uma mensagem agora!
+                    </div>
+                `;
+                visitText = 'Enviar WhatsApp';
+            } else if (data.type === 'web') {
+                 promptHtml = `
+                    <div class="whatsapp-prompt">
+                        <i class="fas fa-external-link-alt"></i> 
+                        Clique para visitar o site completo.
+                    </div>
+                `;
+                visitText = 'Visitar Site';
+            }
+
             return `
                 <div class="card-item">
                     <div class="card">
-                        <div class="card-content">
+                        <div class="card-header">
                             <i class="${data.icon} card-icon"></i>
                             <h3 class="card-title">${data.title}</h3>
-                            <p class="card-description">${data.text}</p>
                         </div>
+                        
+                        <p class="card-description">${data.text}</p>
+
+                        <div class="card-details">
+                            <p>Canal de Atendimento:</p>
+                            ${promptHtml}
+                        </div>
+                        
+                        <a href="${data.url}" id="cardVisitLink-${data.index}" class="visit-link-inside" target="_blank" style="display:none">${visitText}</a>
                     </div>
                 </div>
             `;
         }
 
-        // 3. Renderiza todos os cards no carrossel
+        // 3. Renderiza e Controla o Carrossel
         function renderCarousel() {
             carouselTrack.innerHTML = linkData.map(createCardHTML).join('');
         }
 
-        // 4. Move o carrossel para o slide desejado
         function moveToSlide(index) {
             currentSlide = index;
             const offset = -currentSlide * 100;
@@ -392,13 +405,10 @@
             updateVisitLink();
         }
 
-        // 5. Atualiza botões de navegação e link de visita
         function updateNavButtons() {
-            // As setas agora estão dentro do carousel-container, não do carousel-nav
             prevBtn.disabled = currentSlide === 0;
             nextBtn.disabled = currentSlide === totalSlides - 1;
             
-            // Controle de exibição das setas
             prevBtn.style.display = currentSlide === 0 ? 'none' : 'block';
             nextBtn.style.display = currentSlide === totalSlides - 1 ? 'none' : 'block';
         }
@@ -408,12 +418,20 @@
             if (currentData) {
                 visitBtn.href = currentData.url;
                 visitBtn.style.display = 'inline-block';
+                // Atualiza o texto do botão principal de acordo com o tipo
+                if (currentData.type === 'whatsapp') {
+                    visitBtn.textContent = 'Enviar WhatsApp';
+                } else if (currentData.type === 'web') {
+                    visitBtn.textContent = 'Visitar Site';
+                } else {
+                    visitBtn.textContent = 'Acessar Link';
+                }
             } else {
                 visitBtn.style.display = 'none';
             }
         }
 
-        // 6. Configura eventos ao clicar em um link
+        // 4. Configura eventos ao clicar em um link
         links.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -429,7 +447,7 @@
             });
         });
 
-        // 7. Eventos dos botões de navegação
+        // 5. Eventos dos botões de navegação
         prevBtn.addEventListener('click', () => {
             if (currentSlide > 0) {
                 moveToSlide(currentSlide - 1);
@@ -442,7 +460,7 @@
             }
         });
 
-        // 8. Funções de popup e tema
+        // 6. Funções de popup e tema (mantidas)
         function closePopup() {
             popup.classList.remove('show');
             setTimeout(() => {
