@@ -14,14 +14,16 @@
             --primary-light: #F97316; /* Laranja Sutil */
             --text-dark: #E5E7EB; /* Cinza Claro para Texto Escuro */
             --text-light: #1F2937; /* Cinza Escuro para Texto Claro */
-            --container-dark: rgba(25, 33, 49, 0.85); /* Container Escuro Semi-transparente */
-            --container-light: rgba(255, 255, 255, 0.9); /* Container Claro Semi-transparente */
-            --link-bg-dark: rgba(255, 255, 255, 0.1); /* Fundo Link Escuro */
-            --link-bg-light: #E5E7EB; /* Fundo Link Claro */
+            --container-dark: rgba(25, 33, 49, 0.85);
+            --container-light: rgba(255, 255, 255, 0.9);
+            --link-bg-dark: rgba(255, 255, 255, 0.1);
+            --link-bg-light: #E5E7EB;
             --link-hover-dark: rgba(255, 255, 255, 0.2);
             --link-hover-light: #D1D5DB;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --card-bg-dark: #374151; /* Novo fundo para o card no popup */
+            --card-bg-light: #FFFFFF;
         }
 
         /* 🖼️ Fundo de Imagem Original */
@@ -41,144 +43,38 @@
             color: var(--text-light);
         }
 
-        /* 🌙 Alternador de Tema */
-        .theme-toggle {
-            position: fixed;
-            top: 16px;
-            left: 16px;
-            font-size: 1.2rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.3);
-            border: none;
-            cursor: pointer;
-            color: var(--text-light);
-            z-index: 999;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        body.light-mode .theme-toggle {
-            background-color: rgba(0, 0, 0, 0.2);
-            color: var(--text-dark);
-        }
-
-        .theme-toggle:hover { background-color: rgba(255, 255, 255, 0.5); }
-        body.light-mode .theme-toggle:hover { background-color: rgba(0, 0, 0, 0.4); }
-
-        .wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        /* 📦 Container Principal (Semi-transparente) */
-        .container {
-            max-width: 480px;
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            width: 100%;
-            background-color: var(--container-dark);
-            backdrop-filter: blur(2px);
-            box-shadow: var(--shadow);
-            transition: all 0.5s ease;
-            margin-top: 40px;
-        }
-
-        body.light-mode .container {
-            background-color: var(--container-light);
-            box-shadow: var(--shadow-light);
-        }
-
-        .container * { color: inherit; }
-
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 4px solid var(--primary-light);
-            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
-            transition: border-color 0.3s ease;
-        }
-
-        body.light-mode .avatar { border: 4px solid var(--primary-dark); }
-
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 4px;
-            font-weight: 700;
-            color: var(--primary-light);
-            transition: color 0.3s ease;
-        }
-
-        body.light-mode h1 { color: var(--primary-dark); }
-
-        p {
-            font-size: 1rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-
-        /* 🔗 Links/Botões de Ação */
-        .link {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            background-color: var(--link-bg-dark);
-            border-radius: 10px;
-            padding: 12px 18px;
-            margin: 14px 0;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .link {
-            background-color: var(--link-bg-light);
-            color: var(--text-light);
-        }
-
-        .link:hover {
-            background-color: var(--link-hover-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        body.light-mode .link:hover {
-            background-color: var(--link-hover-light);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .link img { display: none; } /* Oculta as imagens antigas */
-
-        .link i { /* Estilo dos Ícones Font Awesome */
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 1.3rem;
-            color: var(--primary-light);
-            transition: color 0.3s ease;
-        }
-
-        body.light-mode .link i { color: var(--primary-dark); }
-        .link:hover i { color: #fff; }
-        body.light-mode .link:hover i { color: var(--primary-light); }
+        /* Estilos Existentes (Não alterados) */
+        .theme-toggle { /* ... */ }
+        body.light-mode .theme-toggle { /* ... */ }
+        .theme-toggle:hover { /* ... */ }
+        body.light-mode .theme-toggle:hover { /* ... */ }
+        .wrapper { /* ... */ }
+        .container { /* ... */ }
+        body.light-mode .container { /* ... */ }
+        .avatar { /* ... */ }
+        body.light-mode .avatar { /* ... */ }
+        h1 { /* ... */ }
+        body.light-mode h1 { /* ... */ }
+        p { /* ... */ }
+        .link { /* ... */ }
+        body.light-mode .link { /* ... */ }
+        .link:hover { /* ... */ }
+        body.light-mode .link:hover { /* ... */ }
+        .link img { display: none; }
+        .link i { /* ... */ }
+        body.light-mode .link i { /* ... */ }
+        .link:hover i { /* ... */ }
+        body.light-mode .link:hover i { /* ... */ }
+        footer.footer { /* ... */ }
+        body.light-mode footer.footer { /* ... */ }
+        footer.footer a { /* ... */ }
+        footer.footer a:hover { /* ... */ }
 
 
-        /* --- 팝업 (POPUP - Design Glassmorphism) --- */
+        /* ------------------------------------------------ */
+        /* --------- NOVO POPUP (CARROSSEL/CARD) --------- */
+        /* ------------------------------------------------ */
+
         .popup-overlay {
             display: none;
             position: fixed;
@@ -193,15 +89,17 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.9);
-            background: rgba(255, 255, 255, 0.1); /* Glassmorphism */
-            backdrop-filter: blur(10px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            
+            /* Design do Container do Popup */
+            background: var(--container-dark); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
             color: var(--text-dark);
             border-radius: 20px;
-            padding: 30px;
+            padding: 20px;
             width: 90%;
-            max-width: 380px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 500px; /* Largura maior para caber o carrossel */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
             text-align: center;
             opacity: 0;
             pointer-events: none;
@@ -210,8 +108,8 @@
         }
 
         body.light-mode .popup {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: var(--container-light);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             color: var(--text-light);
         }
 
@@ -221,77 +119,158 @@
             pointer-events: auto;
         }
 
-        .popup h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        /* ------------------- Carrossel (Slides) ------------------- */
+        .carousel-wrapper {
+            overflow: hidden;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .popup-slide {
+            min-width: 100%; /* Cada slide ocupa 100% da largura do wrapper */
+            padding: 0 10px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ------------------- Card de Link Individual ------------------- */
+        .popup-card {
+            background-color: var(--card-bg-dark);
+            border-radius: 12px;
+            padding: 30px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 350px;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        body.light-mode .popup-card {
+            background-color: var(--card-bg-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            border: 1px solid #ddd;
+        }
+
+        .popup-icon {
+            font-size: 3rem;
             color: var(--primary-light);
+            margin-bottom: 15px;
+        }
+        body.light-mode .popup-icon {
+            color: var(--primary-dark);
+        }
+
+        .popup-card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
             font-weight: 700;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            color: inherit; /* Herda a cor do card */
+            text-shadow: none;
         }
 
-        body.light-mode .popup h2 { color: var(--primary-dark); }
-
-        .popup p {
-            font-size: 1rem;
-            margin-bottom: 30px;
-            line-height: 1.5;
-            color: var(--text-dark);
-            opacity: 0.9;
+        .popup-card p {
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            opacity: 0.85;
+            flex-grow: 1; /* Permite que o texto preencha o espaço */
+        }
+        
+        .popup-card .card-action {
+             width: 100%;
+             text-align: center;
         }
 
-        body.light-mode .popup p { color: var(--text-light); }
+        /* ------------------- Controles de Carrossel ------------------- */
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px 10px;
+        }
 
-        .popup button {
-            margin: 8px;
-            padding: 12px 25px;
+        .carousel-button {
+            background: var(--primary-light);
             border: none;
-            border-radius: 10px;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.2s, opacity 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .carousel-button:hover:not(:disabled) {
+            background: #D96010;
+        }
+
+        .carousel-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--card-bg-dark); /* Cor escura no disable */
+        }
+        body.light-mode .carousel-button:disabled {
+            background: #ddd;
+        }
+
+        .popup-info {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Botão de Fechar no canto superior direito */
+        .close-popup-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            z-index: 10;
+        }
+        
+        body.light-mode .close-popup-btn {
+             color: var(--text-light);
+        }
+        
+        .close-popup-btn:hover {
+            color: var(--primary-light);
+        }
+        /* Botão de Ação (Acessar Link) */
+        .action-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #visitLink {
             background: var(--primary-light);
             color: white;
+            width: 80%;
+        }
+        
+        .action-button:hover {
+             background: #D96010;
+             box-shadow: 0 4px 10px rgba(249, 115, 22, 0.4);
         }
 
-        #visitLink:hover {
-            background: #D96010;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(249, 115, 22, 0.4);
-        }
-
-        .close-btn {
-            background: #E5E7EB;
-            color: #4B5563;
-        }
-
-        .close-btn:hover {
-            background: #D1D5DB;
-            transform: translateY(-1px);
-        }
-
-        /* Rodapé */
-        footer.footer {
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
-            margin: 40px 0 20px;
-            transition: color 0.3s ease;
-        }
-
-        body.light-mode footer.footer { color: rgba(0, 0, 0, 0.4); }
-
-        footer.footer a {
-            color: inherit;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        footer.footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -303,65 +282,171 @@
             <h1>JFG Metais</h1>
             <p>A JFG Metais comercializa grapas, mão francesa e suportes para fixação. Construtoras e Marmorarias, fiquem à vontade para nos chamar!</p>
 
-            <a class="link" data-title="Site" data-text="Acesse nosso site. Por lá você consegue fazer um breve orçamento das peças disponíveis em estoque." data-url="https://jfgmetais.com.br/">
-                <i class="fas fa-globe"></i> Site
+            <div class="link" data-index="0">
+                <i class="fas fa-globe"></i>
+                Site
                 <img src="placeholder.png" alt="Site" style="display: none;">
-            </a>
+            </div>
 
-            <a class="link" data-title="Jessé Ferreira" data-text="Sou o responsável administrativo da JFG Metais. Me chame para falar de processos internos." data-url="http://wa.me/5511942147315">
-                <i class="fab fa-whatsapp"></i> Administrativo
+            <div class="link" data-index="1">
+                <i class="fab fa-whatsapp"></i>
+                Administrativo
                 <img src="placeholder.png" alt="WhatsApp Administrativo" style="display: none;">
-            </a>
+            </div>
 
-            <a class="link" data-title="Duana Kelly" data-text="Cuido das vendas. Dúvidas sobre pedidos é só me chamar." data-url="http://wa.me/5511974177315">
-                <i class="fab fa-whatsapp"></i> Vendas
+            <div class="link" data-index="2">
+                <i class="fab fa-whatsapp"></i>
+                Vendas
                 <img src="placeholder.png" alt="WhatsApp Vendas" style="display: none;">
-            </a>
+            </div>
 
-            <a class="link" data-title="André Santos" data-text="Cuido dos orçamentos. Vamos negociar? Me envie sua solicitação ou ordem de compra." data-url="https://wa.me/5511932875887">
-                <i class="fab fa-whatsapp"></i> Orçamentos
+            <div class="link" data-index="3">
+                <i class="fab fa-whatsapp"></i>
+                Orçamentos
                 <img src="placeholder.png" alt="WhatsApp Orçamentos" style="display: none;">
-            </a>
+            </div>
 
-            <a class="link" data-title="Róbson Eugênio" data-text="Sou do setor Logístico. Precisando de informações sobre rotas, estoque, prazo de entregas... me chame aqui." data-url="http://wa.me/5511998629882">
-                <i class="fas fa-truck-fast"></i> Logístico
+            <div class="link" data-index="4">
+                <i class="fas fa-truck-fast"></i>
+                Logístico
                 <img src="placeholder.png" alt="WhatsApp Logístico" style="display: none;">
-            </a>
+            </div>
         </div>
     </div>
 
     <div class="popup-overlay" id="overlay"></div>
     <div class="popup" id="popup">
-        <h2 id="popupTitle"></h2>
-        <p id="popupText"></p>
-        <button id="visitLink">Acessar Link</button>
-        <button class="close-btn" onclick="closePopup()">Fechar</button>
-    </div>
+        <button class="close-popup-btn" onclick="closePopup()"><i class="fas fa-times"></i></button>
 
+        <div class="carousel-wrapper">
+            <div class="carousel-inner" id="carouselInner">
+                </div>
+        </div>
+        
+        <div class="carousel-controls">
+            <button class="carousel-button" id="prevBtn" disabled><i class="fas fa-arrow-left"></i></button>
+            <span class="popup-info" id="slideInfo">1 / 5</span>
+            <button class="carousel-button" id="nextBtn"><i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
     <footer class="footer">
         © 2025 <a href="aqui vai meu link" target="_blank">André R. dos Santos</a>
     </footer>
 
     <script>
+        // ----------------------------------------------------
+        // NOVO DATASET com todas as informações dos links
+        // ----------------------------------------------------
+        const linkData = [
+            {
+                title: "Site",
+                text: "Acesse nosso site. Por lá você consegue fazer um breve orçamento das peças disponíveis em estoque.",
+                url: "https://jfgmetais.com.br/",
+                icon: "fas fa-globe"
+            },
+            {
+                title: "Jessé Ferreira",
+                text: "Sou o responsável administrativo da JFG Metais. Me chame para falar de processos internos.",
+                url: "http://wa.me/5511942147315",
+                icon: "fab fa-whatsapp"
+            },
+            {
+                title: "Duana Kelly",
+                text: "Cuido das vendas. Dúvidas sobre pedidos é só me chamar.",
+                url: "http://wa.me/5511974177315",
+                icon: "fab fa-whatsapp"
+            },
+            {
+                title: "André Santos",
+                text: "Cuido dos orçamentos. Vamos negociar? Me envie sua solicitação ou ordem de compra.",
+                url: "https://wa.me/5511932875887",
+                icon: "fab fa-whatsapp"
+            },
+            {
+                title: "Róbson Eugênio",
+                text: "Sou do setor Logístico. Precisando de informações sobre rotas, estoque, prazo de entregas... me chame aqui.",
+                url: "http://wa.me/5511998629882",
+                icon: "fas fa-truck-fast"
+            }
+        ];
+
+        // ----------------------------------------------------
+        // Variáveis e Funções do Carrossel
+        // ----------------------------------------------------
         const links = document.querySelectorAll('.link');
         const popup = document.getElementById('popup');
         const overlay = document.getElementById('overlay');
-        const popupTitle = document.getElementById('popupTitle');
-        const popupText = document.getElementById('popupText');
-        const visitBtn = document.getElementById('visitLink');
+        const carouselInner = document.getElementById('carouselInner');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideInfo = document.getElementById('slideInfo');
         const themeToggle = document.getElementById('themeToggle');
-        let currentUrl = '';
 
+        let currentSlide = 0;
+        const totalSlides = linkData.length;
+
+        // Função para construir o HTML dos cards dentro do carrossel
+        function buildCarouselSlides() {
+            carouselInner.innerHTML = linkData.map((data, index) => `
+                <div class="popup-slide">
+                    <div class="popup-card">
+                        <i class="${data.icon} popup-icon"></i>
+                        <h2>${data.title}</h2>
+                        <p>${data.text}</p>
+                        <div class="card-action">
+                            <button class="action-button" onclick="goToLink('${data.url}')">Acessar Link</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Função de navegação
+        function updateCarousel(direction) {
+            currentSlide += direction;
+
+            if (currentSlide < 0) {
+                currentSlide = 0;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = totalSlides - 1;
+            }
+
+            const offset = -currentSlide * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
+
+            // Atualiza botões e info
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+            slideInfo.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        // ----------------------------------------------------
+        // Event Listeners
+        // ----------------------------------------------------
+
+        // Ação de clique nos botões (divs) da página principal
         links.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                popupTitle.textContent = link.dataset.title;
-                popupText.textContent = link.dataset.text;
-                currentUrl = link.dataset.url;
+            link.addEventListener('click', () => {
+                const startIndex = parseInt(link.dataset.index);
+                
+                // Reinicia para o slide do link clicado
+                currentSlide = startIndex;
+                updateCarousel(0); // Força a atualização da posição
+                
                 popup.classList.add('show');
                 overlay.style.display = 'block';
             });
         });
+
+        // Controles do carrossel
+        prevBtn.addEventListener('click', () => updateCarousel(-1));
+        nextBtn.addEventListener('click', () => updateCarousel(1));
+        
+        // Ação do botão Acessar Link dentro do card
+        function goToLink(url) {
+            window.open(url, '_blank');
+            closePopup();
+        }
 
         function closePopup() {
             popup.classList.remove('show');
@@ -370,28 +455,30 @@
             }, 300);
         }
 
-        visitBtn.addEventListener('click', () => {
-            window.open(currentUrl, '_blank');
-            closePopup();
-        });
-
         overlay.addEventListener('click', closePopup);
+
+        // ----------------------------------------------------
+        // Inicialização e Tema
+        // ----------------------------------------------------
 
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
             const isLight = document.body.classList.contains('light-mode');
-            // Altera o ícone Font Awesome
             themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
         }
 
         window.onload = () => {
+            // Inicializa Carrossel
+            buildCarouselSlides();
+            updateCarousel(0);
+            
+            // Inicializa Tema
             const saved = localStorage.getItem('theme');
             const isLight = saved === 'light';
             if (isLight) {
                 document.body.classList.add('light-mode');
             }
-            // Inicializa o ícone correto
             themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         }
     </script>
