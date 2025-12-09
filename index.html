@@ -12,8 +12,8 @@
         :root {
             --primary-dark: #1E3A8A; /* Azul Escuro */
             --primary-light: #F97316; /* Laranja Sutil */
-            --text-dark: #E5E7EB;
-            --text-light: #1F2937;
+            --text-dark: #E5E7EB; /* Branco/Cinza Claro para texto escuro */
+            --text-light: #1F2937; /* Cinza Escuro para texto claro */
             --container-dark: rgba(25, 33, 49, 0.85);
             --container-light: rgba(255, 255, 255, 0.9);
             --link-bg-dark: rgba(255, 255, 255, 0.1);
@@ -41,7 +41,7 @@
             color: var(--text-light);
         }
 
-        /* 🌙 Alternador de Tema */
+        /* 🌙 Alternador de Tema e Container Principal (Mantido) */
         .theme-toggle {
             position: fixed; top: 16px; left: 16px; font-size: 1.2rem;
             width: 40px; height: 40px; border-radius: 50%;
@@ -57,8 +57,6 @@
             display: flex; justify-content: center; align-items: flex-start;
             min-height: 100vh; padding: 40px 20px;
         }
-
-        /* 📦 Container Principal */
         .container {
             max-width: 480px; border-radius: 16px; padding: 30px;
             text-align: center; width: 100%;
@@ -67,19 +65,15 @@
         }
         body.light-mode .container { background-color: var(--container-light); box-shadow: var(--shadow-light); }
         .container * { color: inherit; }
-
         .avatar {
             width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
             margin-bottom: 20px; border: 4px solid var(--primary-light);
             box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1); transition: border-color 0.3s ease;
         }
         body.light-mode .avatar { border: 4px solid var(--primary-dark); }
-
         h1 { font-size: 1.8rem; margin-bottom: 4px; font-weight: 700; color: var(--primary-light); transition: color 0.3s ease; }
         body.light-mode h1 { color: var(--primary-dark); }
         p { font-size: 1rem; margin-bottom: 30px; opacity: 0.9; line-height: 1.5; }
-
-        /* 🔗 Links/Botões de Ação */
         .link {
             display: flex; align-items: center; justify-content: flex-start;
             background-color: var(--link-bg-dark); border-radius: 10px;
@@ -108,12 +102,10 @@
             display: none; position: fixed; inset: 0;
             background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); z-index: 1000;
         }
-
         .popup {
             position: fixed; top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0.9);
-            width: 90%; max-width: 400px;
-            height: 90%; max-height: 580px; 
+            width: 90%; max-width: 400px; height: 90%; max-height: 580px; 
             background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--text-dark); border-radius: 20px;
@@ -127,26 +119,24 @@
         body.light-mode .popup { background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(0, 0, 0, 0.05); color: var(--text-light); }
         .popup.show { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
 
-        /* --- Cabeçalho --- */
         .popup-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 0 5px; }
         .popup-header h2 { font-size: 1.4rem; font-weight: 700; color: var(--primary-light); margin: 0; }
         body.light-mode .popup-header h2 { color: var(--primary-dark); }
         .close-btn { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--text-dark); opacity: 0.7; }
         body.light-mode .close-btn { color: var(--text-light); }
-        .close-btn:hover { color: var(--primary-light); opacity: 1; transform: rotate(90deg); }
 
-        /* --- Carrossel Slider Container --- */
         .carousel-container {
             flex-grow: 1; overflow: hidden; position: relative;
             padding: 0 5px; 
         }
         .carousel-track { display: flex; height: 100%; transition: transform 0.4s ease-in-out; }
 
-        /* --- Card de Conteúdo Compacto (AJUSTADO PARA LEGIBILIDADE) --- */
+        /* --- Card de Conteúdo Compacto (CORREÇÃO DE LEGIBILIDADE APLICADA) --- */
         .card-item { min-width: 100%; padding: 0; box-sizing: border-box; display: flex; justify-content: center; align-items: center; text-align: center; }
 
         .card {
-            background-color: rgba(0, 0, 0, 0.7); /* ⬅️ AJUSTE CRÍTICO: Fundo mais escuro (sólido) */
+            /* Fundo mais escuro/sólido no modo escuro */
+            background-color: rgba(0, 0, 0, 0.7); 
             border: 2px solid var(--primary-light);
             border-radius: 16px;
             padding: 20px; 
@@ -155,14 +145,14 @@
             display: flex; flex-direction: column; justify-content: space-between;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
-            color: var(--text-dark); /* Texto padrão claro no modo escuro */
+            color: var(--text-dark); /* Texto CLARO no modo escuro */
         }
 
         body.light-mode .card {
             background-color: #FAFAFA;
             border: 2px solid var(--primary-dark);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            color: var(--text-light); /* Texto padrão escuro no modo claro */
+            color: var(--text-light); /* Texto ESCURO no modo claro */
         }
 
         .card-header {
@@ -179,13 +169,14 @@
 
         .card-icon {
             font-size: 2.5rem;
+            color: inherit; /* Garante que o ícone tenha a cor correta do card-header */
         }
 
         .card-title {
             font-size: 1.2rem;
             font-weight: 700;
             margin: 0;
-            color: inherit; 
+            color: inherit; /* Herda a cor do card-header (primary-light/dark) */
         }
 
         /* ➡️ Descrição: Máxima Legibilidade */
@@ -193,7 +184,7 @@
             font-size: 0.9rem;
             line-height: 1.5;
             opacity: 1; 
-            color: inherit; /* Herda a cor do .card (claro no escuro, escuro no claro) */
+            color: inherit; /* HERDA CORRETO: (Claro no escuro, escuro no claro) */
             text-align: left; 
             padding: 0 5px;
             margin-bottom: 20px;
@@ -219,11 +210,12 @@
         body.light-mode .card-details p { color: var(--primary-dark); }
 
         .whatsapp-prompt {
+            /* Fundo do prompt ajustado para contraste */
             background: rgba(255, 255, 255, 0.15);
             border-radius: 8px;
             padding: 8px;
             margin-top: 8px;
-            color: inherit; /* Herda a cor do .card */
+            color: inherit; /* **CRÍTICO:** Herda a cor do texto do card para ser visível */
             font-size: 0.9rem;
             display: flex;
             align-items: center;
@@ -233,39 +225,23 @@
         body.light-mode .whatsapp-prompt { background: rgba(0, 0, 0, 0.05); }
         .whatsapp-prompt i { color: #25D366; } 
 
-        /* --- Setas Laterais (Reafirmando estilos) --- */
+        /* --- Setas Laterais (Mantido) --- */
         .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--primary-light); 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            width: 40px; 
-            height: 40px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            opacity: 0.3; 
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.05); color: var(--primary-light); 
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50%;
+            width: 40px; height: 40px; font-size: 1.1rem; cursor: pointer;
+            z-index: 10; transition: all 0.3s ease; opacity: 0.3; 
         }
-        
         .nav-btn:hover {
-            opacity: 1;
-            background: rgba(249, 115, 22, 0.8);
-            color: white; 
+            opacity: 1; background: rgba(249, 115, 22, 0.8); color: white; 
             border-color: var(--primary-light);
         }
-
-        .nav-btn:disabled {
-            display: none;
-        }
-
+        .nav-btn:disabled { display: none; }
         #prevBtn { left: -10px; } 
         #nextBtn { right: -10px; } 
 
-        /* --- Botão Acessar Link --- */
+        /* --- Botão Acessar Link (Mantido) --- */
         .carousel-nav { display: flex; justify-content: center; align-items: center; margin-top: 15px; }
         #visitLink {
             background: var(--primary-light); color: white;
@@ -358,7 +334,7 @@
                 text: link.dataset.text,
                 url: link.dataset.url,
                 icon: link.dataset.icon || link.querySelector('i').className,
-                type: link.dataset.contactType, // Novo dado
+                type: link.dataset.contactType,
                 index: index
             });
         });
