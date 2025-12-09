@@ -41,7 +41,7 @@
             color: var(--text-light);
         }
 
-        /* 🌙 Alternador de Tema e Container Principal */
+        /* 🌙 Alternador de Tema e Container Principal (Mantido) */
         .theme-toggle {
             position: fixed; top: 16px; left: 16px; font-size: 1.2rem;
             width: 40px; height: 40px; border-radius: 50%;
@@ -135,7 +135,8 @@
         .card-item { min-width: 100%; padding: 0; box-sizing: border-box; display: flex; justify-content: center; align-items: center; text-align: center; }
 
         .card {
-            background-color: rgba(0, 0, 0, 0.7); /* Fundo mais escuro (sólido) */
+            /* Fundo mais escuro/sólido no modo escuro */
+            background-color: rgba(0, 0, 0, 0.7); 
             border: 2px solid var(--primary-light);
             border-radius: 16px;
             padding: 20px; 
@@ -144,14 +145,14 @@
             display: flex; flex-direction: column; justify-content: space-between;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
-            color: var(--text-dark); /* Texto CLARO no modo escuro */
+            color: var(--text-dark); /* Texto CLARO no modo escuro (base) */
         }
 
         body.light-mode .card {
             background-color: #FAFAFA;
             border: 2px solid var(--primary-dark);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            color: var(--text-light); /* Texto ESCURO no modo claro */
+            color: var(--text-light); /* Texto ESCURO no modo claro (base) */
         }
 
         .card-header {
@@ -178,16 +179,22 @@
             color: inherit; 
         }
 
-        /* ➡️ Descrição: Máxima Legibilidade */
+        /* ➡️ Descrição: CORREÇÃO DEFINITIVA DE COR */
         .card-description {
             font-size: 0.9rem;
             line-height: 1.5;
             opacity: 1; 
-            color: inherit; /* Herda a cor do .card (CLARO no escuro, ESCURO no claro) */
+            /* FORÇA BRANCO no modo escuro */
+            color: #FFFFFF !important; 
             text-align: left; 
             padding: 0 5px;
             margin-bottom: 20px;
             flex-grow: 1;
+        }
+
+        /* FORÇA COR ESCURA no modo claro */
+        body.light-mode .card-description { 
+            color: var(--text-light) !important; 
         }
 
         /* --- Seção de Detalhes Interativos --- */
@@ -209,12 +216,13 @@
         body.light-mode .card-details p { color: var(--primary-dark); }
 
         .whatsapp-prompt {
-            /* ⬅️ CORREÇÃO CRÍTICA: Fundo escuro/sólido no modo escuro para garantir contraste */
-            background: rgba(0, 0, 0, 0.4); 
+            /* Fundo do prompt ajustado para contraste */
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 8px;
             padding: 8px;
             margin-top: 8px;
-            color: inherit; /* Herda a cor do texto CLARO do card */
+            /* FORÇA BRANCO no modo escuro */
+            color: #FFFFFF !important; 
             font-size: 0.9rem;
             display: flex;
             align-items: center;
@@ -222,12 +230,13 @@
             gap: 8px;
         }
         body.light-mode .whatsapp-prompt { 
-            background: rgba(0, 0, 0, 0.05); /* Fundo claro no modo claro */
-            color: inherit; /* Herda a cor do texto ESCURO do card */
+            background: rgba(0, 0, 0, 0.05); 
+            /* FORÇA COR ESCURA no modo claro */
+            color: var(--text-light) !important;
         }
         .whatsapp-prompt i { color: #25D366; } 
 
-        /* --- Setas Laterais (Mantido: Quase transparentes) --- */
+        /* --- Setas Laterais (Mantido) --- */
         .nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.05); color: var(--primary-light); 
@@ -243,7 +252,7 @@
         #prevBtn { left: -10px; } 
         #nextBtn { right: -10px; } 
 
-        /* --- Botão Acessar Link */
+        /* --- Botão Acessar Link (Mantido) --- */
         .carousel-nav { display: flex; justify-content: center; align-items: center; margin-top: 15px; }
         #visitLink {
             background: var(--primary-light); color: white;
