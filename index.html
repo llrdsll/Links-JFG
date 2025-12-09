@@ -14,16 +14,15 @@
             --primary-light: #F97316; /* Laranja Sutil (Substitui o Laranja Forte) */
             --text-dark: #E5E7EB; /* Cinza Claro para Texto Escuro */
             --text-light: #1F2937; /* Cinza Escuro para Texto Claro */
-            --bg-dark: #1F2937; /* Fundo Escuro (Corpo) */
-            --bg-light: #F3F4F6; /* Fundo Claro (Corpo) */
-            --container-dark: #374151; /* Fundo Container Escuro */
-            --container-light: #FFFFFF; /* Fundo Container Claro */
-            --link-bg-dark: #4B5563; /* Fundo Link Escuro */
+            /* Cores de fundo do body removidas para usar as imagens */
+            --container-dark: rgba(25, 33, 49, 0.85); /* Fundo Container Escuro (Semi-transparente para ver o BG) */
+            --container-light: rgba(255, 255, 255, 0.9); /* Fundo Container Claro (Semi-transparente para ver o BG) */
+            --link-bg-dark: rgba(255, 255, 255, 0.1); /* Fundo Link Escuro (Semi-transparente) */
             --link-bg-light: #E5E7EB; /* Fundo Link Claro */
-            --link-hover-dark: #6B7280; /* Hover Link Escuro */
+            --link-hover-dark: rgba(255, 255, 255, 0.2); /* Hover Link Escuro */
             --link-hover-light: #D1D5DB; /* Hover Link Claro */
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.15);
             --popup-bg: #FFFFFF;
         }
 
@@ -31,14 +30,17 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            /* Usando um fundo de cor sólida ou gradiente para melhor controle */
-            background-color: var(--bg-dark);
+            /* ➡️ MANTENDO IMAGEM DE FUNDO ESCURA ORIGINAL */
+            background: url('escuroo.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: var(--text-dark);
             transition: all 0.5s ease;
         }
 
         body.light-mode {
-            background-color: var(--bg-light);
+            /* ➡️ MANTENDO IMAGEM DE FUNDO CLARA ORIGINAL */
+            background: url('clara.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: var(--text-light);
         }
 
@@ -51,45 +53,49 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
+            /* Ajustado para ser mais visível sobre o fundo de imagem */
+            background-color: rgba(255, 255, 255, 0.3); 
             border: none;
             cursor: pointer;
-            color: var(--text-dark);
+            color: var(--text-light); /* Cor inicial escura para contraste */
             z-index: 999;
             transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         body.light-mode .theme-toggle {
-            background-color: rgba(0, 0, 0, 0.1);
-            color: var(--text-light);
+            background-color: rgba(0, 0, 0, 0.2);
+            color: var(--text-dark);
         }
 
         .theme-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.5);
         }
 
         body.light-mode .theme-toggle:hover {
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
         .wrapper {
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Alinha no topo ou mantém no centro se houver pouco conteúdo */
+            align-items: flex-start;
             min-height: 100vh;
             padding: 40px 20px;
         }
 
         .container {
             max-width: 480px;
-            border-radius: 16px; /* Borda mais suave */
+            border-radius: 16px;
             padding: 30px;
             text-align: center;
             width: 100%;
-            background-color: var(--container-dark);
+            /* ⚠️ Fundo com transparência para a imagem de fundo aparecer */
+            background-color: var(--container-dark); 
+            backdrop-filter: blur(2px); /* Efeito de desfoque suave */
             box-shadow: var(--shadow);
             transition: all 0.5s ease;
-            margin-top: 40px; /* Margem superior para separar do topo */
+            margin-top: 40px;
         }
 
         body.light-mode .container {
@@ -97,20 +103,18 @@
             box-shadow: var(--shadow-light);
         }
 
-        /* Removendo a regra `!important` para maior flexibilidade */
-        .container *,
-        body.light-mode .container * {
-            color: inherit; /* Permite que os elementos herdem a cor do .container ou body */
+        .container * {
+            color: inherit;
         }
 
         .avatar {
-            width: 120px; /* Avatar maior */
+            width: 120px;
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
-            border: 4px solid var(--primary-light); /* Borda destacada com a cor primária */
-            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1); /* Sombra suave para profundidade */
+            border: 4px solid var(--primary-light);
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
             transition: border-color 0.3s ease;
         }
 
@@ -122,7 +126,7 @@
             font-size: 1.8rem;
             margin-bottom: 4px;
             font-weight: 700;
-            color: var(--primary-light); /* Título com cor de destaque */
+            color: var(--primary-light);
             transition: color 0.3s ease;
         }
 
@@ -141,8 +145,8 @@
         .link {
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Alinhamento à esquerda */
-            background-color: var(--link-bg-dark);
+            justify-content: flex-start;
+            background-color: var(--link-bg-dark); /* Fundo semi-transparente escuro */
             border-radius: 10px;
             padding: 12px 18px;
             margin: 14px 0;
@@ -171,7 +175,7 @@
         }
 
         .link img {
-            display: none; /* Escondendo as imagens padrão para usar ícones Font Awesome */
+            display: none;
         }
 
         .link i {
@@ -191,19 +195,19 @@
         }
 
         .link:hover i {
-            color: #fff; /* Ícone branco no hover escuro */
+            color: #fff;
         }
 
         body.light-mode .link:hover i {
-             color: var(--primary-light); /* Ícone laranja no hover claro */
+             color: var(--primary-light);
         }
 
-        /* 팝업 (Popup) */
+        /* POPUP */
         .popup-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6); /* Overlay mais escuro */
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(6px);
             z-index: 1000;
         }
@@ -223,7 +227,7 @@
             text-align: center;
             opacity: 0;
             pointer-events: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito "mola" */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1001;
         }
 
@@ -244,7 +248,7 @@
             font-size: 1rem;
             margin-bottom: 25px;
             line-height: 1.5;
-            color: #4B5563; /* Cor específica para o texto do popup */
+            color: #4B5563;
         }
 
         .popup button {
@@ -259,16 +263,16 @@
         }
 
         #visitLink {
-            background: var(--primary-light); /* Botão de Visitar com cor primária */
+            background: var(--primary-light);
             color: white;
         }
 
         #visitLink:hover {
-            background: #D96010; /* Laranja mais escuro no hover */
+            background: #D96010;
         }
 
         .close-btn {
-            background: #E5E7EB; /* Botão de fechar com cor neutra */
+            background: #E5E7EB;
             color: #4B5563;
         }
 
@@ -359,7 +363,7 @@
 
         links.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault(); // Impede a navegação padrão da tag <a>
+                e.preventDefault();
                 popupTitle.textContent = link.dataset.title;
                 popupText.textContent = link.dataset.text;
                 currentUrl = link.dataset.url;
@@ -370,7 +374,6 @@
 
         function closePopup() {
             popup.classList.remove('show');
-            // Dá um pequeno atraso para a animação de saída do popup
             setTimeout(() => {
                 overlay.style.display = 'none';
             }, 300);
@@ -396,7 +399,6 @@
             if (isLight) {
                 document.body.classList.add('light-mode');
             }
-            // Inicializa o ícone correto
             themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         }
     </script>
