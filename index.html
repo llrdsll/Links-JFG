@@ -3,63 +3,59 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinksJFG Futurista</title>
+    <title>LinksJFG Futurista Claro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
         /* 🎨 Váriaveis Futuristas */
         :root {
-            --neon-orange: #F97316;
-            --neon-blue: #0EA5E9;
-            --bg-dark: #09090b;
+            --neon-orange: #F97316; /* Destaque */
+            --neon-blue: #0EA5E9; /* Secundário */
+            --bg-dark: #09090b; /* Fundo do site (escuro) */
             
-            /* Gradiente de energia para botões */
             --energy-gradient: linear-gradient(135deg, var(--neon-orange), #ef4444);
             
-            --card-glass-bg: rgba(20, 20, 30, 0.75); /* Vidro escuro */
-            --card-glow: 0 0 25px rgba(249, 115, 22, 0.4), inset 0 0 2px rgba(255,255,255,0.1); /* Brilho Neon */
+            /* ✨ Novo Fundo do Card: Branco/Claro com transparência sutil */
+            --card-light-glass-bg: rgba(255, 255, 255, 0.95);
+            /* Sombra suave com toque de cor para o card claro */
+            --card-glow-light: 0 0 10px rgba(249, 115, 22, 0.2), 0 8px 30px rgba(0, 0, 0, 0.15); 
+            
+            --text-high-contrast: #111827; /* Preto/Escuro para texto do card */
+            --text-low-contrast: #4B5563; /* Cinza para descrição */
         }
 
+        /* 🖼️ Configurações Gerais do Site */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0; padding: 0;
             background: url('escuroo.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #E5E7EB;
+            color: #E5E7EB; /* Texto geral do site é claro */
             transition: all 0.5s ease;
             overflow-x: hidden;
         }
 
-        /* Modo claro muda apenas o fundo do site, o card permanece futurista (escuro) */
         body.light-mode {
             background: url('clara.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #111827;
         }
 
-        /* 🌙 Botão de Tema (Estilo Tech) */
+        /* --- Estilização do Container Geral --- */
         .theme-toggle {
-            position: fixed; top: 20px; left: 20px;
-            width: 50px; height: 50px; border-radius: 12px;
-            background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px); color: var(--neon-orange);
-            cursor: pointer; z-index: 999; font-size: 1.3rem;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
+            position: fixed; top: 20px; left: 20px; width: 50px; height: 50px; border-radius: 12px;
+            background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); 
+            color: var(--neon-orange); cursor: pointer; z-index: 999; font-size: 1.3rem; transition: all 0.3s ease;
         }
         .theme-toggle:hover { box-shadow: 0 0 20px var(--neon-orange); color: #fff; }
 
-        .wrapper {
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; padding: 40px 20px;
-        }
+        .wrapper { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 40px 20px; }
         
-        /* Container Principal (Glassmorphism) */
         .container {
             max-width: 480px; width: 100%;
             background: rgba(15, 23, 42, 0.7); 
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px); 
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px; padding: 40px 30px;
             text-align: center; 
@@ -70,8 +66,7 @@
             width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
             margin-bottom: 20px; 
             border: 3px solid var(--neon-orange);
-            /* Avatar brilhando */
-            box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
         }
         
         h1 { font-size: 2rem; margin-bottom: 8px; font-weight: 800; letter-spacing: -1px; color: #fff; text-transform: uppercase; }
@@ -80,43 +75,33 @@
         /* Links Estilo "Data Pad" */
         .link {
             display: flex; align-items: center; justify-content: flex-start;
-            background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 16px 20px; margin: 12px 0; text-decoration: none;
-            font-weight: 600; font-size: 1.05rem; color: #fff;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px; padding: 16px 20px; margin: 12px 0; text-decoration: none;
+            font-weight: 600; font-size: 1.05rem; color: #fff; transition: all 0.3s ease;
             position: relative; overflow: hidden;
         }
         
-        /* Efeito de hover futurista nos links */
         .link::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.2), transparent);
             transition: 0.5s;
         }
         .link:hover::before { left: 100%; }
-        .link:hover { 
-            transform: translateX(5px); 
-            border-color: var(--neon-orange);
-            box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
-        }
+        .link:hover { transform: translateX(5px); border-color: var(--neon-orange); box-shadow: 0 0 15px rgba(249, 115, 22, 0.2); }
 
         .link i {
             width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
             margin-right: 15px; font-size: 1.4rem; color: var(--neon-orange);
-            transition: all 0.3s ease;
-            text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+            transition: all 0.3s ease; text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
         }
 
         /* ------------------------------------------------ */
-        /* --- 🚀 POPUP E CARD FUTURISTA 🚀 --- */
+        /* --- 🚀 POPUP E CARD FUTURISTA CLARO 🚀 --- */
         /* ------------------------------------------------ */
 
         .popup-overlay {
             display: none; position: fixed; inset: 0;
-            background: rgba(0, 0, 0, 0.8); /* Fundo bem escuro */
-            backdrop-filter: blur(10px); z-index: 1000;
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 1000;
         }
         
         .popup {
@@ -139,77 +124,74 @@
         }
         .close-btn:hover { background: var(--neon-orange); box-shadow: 0 0 15px var(--neon-orange); transform: rotate(90deg); }
 
-        .carousel-container { flex-grow: 1; overflow: visible; position: relative; perspective: 1000px; }
+        .carousel-container { flex-grow: 1; overflow: visible; position: relative; }
         .carousel-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .card-item { min-width: 100%; padding: 10px; box-sizing: border-box; display: flex; justify-content: center; }
 
-        /* ✨ O NOVO CARD FUTURISTA ✨ */
+        /* ✨ O CARD CLARO E LUMINOSO ✨ */
         .card {
-            /* Fundo de vidro escuro */
-            background: var(--card-glass-bg) !important;
-            /* Desfoque extremo para efeito de vidro fosco */
-            backdrop-filter: blur(25px) saturate(150%); -webkit-backdrop-filter: blur(25px);
+            /* Fundo de vidro CLARO */
+            background: var(--card-light-glass-bg) !important;
+            backdrop-filter: blur(18px) saturate(150%);
             
-            /* REMOVIDA A BORDA SÓLIDA. Adicionado brilho neon nas bordas. */
-            border: 1px solid rgba(255, 255, 255, 0.05); /* Borda muito sutil para definição */
-            box-shadow: var(--card-glow);
+            /* Borda sutil e sombra suave */
+            border: 1px solid rgba(249, 115, 22, 0.1); 
+            box-shadow: var(--card-glow-light);
             
-            color: #FFFFFF !important; /* Texto sempre branco */
+            /* Texto de alto contraste para o fundo claro */
+            color: var(--text-high-contrast) !important; 
+            
             border-radius: 30px;
             padding: 40px 30px;
             width: 100%; max-width: 340px;
             display: flex; flex-direction: column; align-items: center; text-align: center;
             position: relative; overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        /* Efeito de hover de luz no card claro */
+        .card:hover {
+             box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
-        /* Efeito de luz no topo do card */
-        .card::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 50%;
-            background: radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, transparent 70%);
-            opacity: 0.5; pointer-events: none;
-        }
-
-        /* Ícone flutuante e brilhante */
+        /* Anel de luz/Destaque no Ícone */
         .card-icon-wrapper {
             width: 90px; height: 90px;
-            /* Fundo transparente, apenas um anel de luz */
-            background: transparent;
-            border: 2px solid rgba(249, 115, 22, 0.3);
+            background: #FFFBEB; /* Fundo amarelo muito claro */
+            border: 2px solid rgba(249, 115, 22, 0.5);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 25px;
-            /* Brilho interno e externo */
-            box-shadow: inset 0 0 15px rgba(249, 115, 22, 0.2), 0 0 20px rgba(249, 115, 22, 0.1);
+            box-shadow: inset 0 0 15px rgba(249, 115, 22, 0.2), 0 0 25px rgba(249, 115, 22, 0.4);
             animation: pulseIcon 3s infinite ease-in-out;
         }
         .card-icon { 
             font-size: 2.8rem; color: var(--neon-orange); 
-            /* O ícone em si brilha como luz */
-            text-shadow: 0 0 15px rgba(249, 115, 22, 0.8);
+            text-shadow: 0 0 5px rgba(249, 115, 22, 0.4);
         }
 
-        .card-title { font-size: 1.6rem; font-weight: 800; margin: 0 0 15px 0; color: #fff; letter-spacing: 0.5px; text-transform: uppercase; }
+        .card-title { font-size: 1.6rem; font-weight: 800; margin: 0 0 15px 0; color: var(--text-high-contrast); letter-spacing: 0.5px; text-transform: uppercase; }
 
+        /* Destaque da Descrição (Cinza escuro para contraste) */
         .card-description {
-            font-size: 1rem; line-height: 1.7; color: rgba(255, 255, 255, 0.8) !important;
-            margin-bottom: 30px; font-weight: 400; letter-spacing: 0.3px;
+            font-size: 1rem; line-height: 1.7; 
+            color: var(--text-low-contrast) !important; 
+            margin-bottom: 30px; font-weight: 500;
         }
 
         .card-footer { width: 100%; margin-top: auto; }
         
-        /* Prompt futurista transparente */
+        /* Prompt (caixa inferior) */
         .whatsapp-prompt {
-            background: rgba(255, 255, 255, 0.05);
+            background: #E5E7EB; /* Cinza claro */
             border: 1px solid rgba(249, 115, 22, 0.3);
-            color: var(--neon-orange) !important;
+            color: var(--text-high-contrast) !important;
             padding: 12px; border-radius: 16px;
             font-size: 0.95rem; font-weight: 600;
             display: flex; align-items: center; justify-content: center; gap: 10px;
-            box-shadow: inset 0 0 10px rgba(249, 115, 22, 0.1);
         }
-        .whatsapp-prompt i { text-shadow: 0 0 5px currentColor; }
+        .whatsapp-prompt i { color: #25D366; }
 
-        /* --- Botões de Navegação (Setas de Energia) --- */
+        /* --- Botões de Navegação e Link Principal (Mantido o estilo futurista/neon) --- */
         .nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             width: 50px; height: 50px; border-radius: 50%;
@@ -217,13 +199,9 @@
             color: var(--neon-orange); cursor: pointer; z-index: 10; font-size: 1.2rem;
             backdrop-filter: blur(5px); transition: all 0.3s ease;
         }
-        .nav-btn:hover { 
-            background: var(--neon-orange); color: #fff; 
-            box-shadow: 0 0 25px var(--neon-orange); border-color: transparent;
-        }
+        .nav-btn:hover { background: var(--neon-orange); color: #fff; box-shadow: 0 0 25px var(--neon-orange); }
         #prevBtn { left: -20px; } #nextBtn { right: -20px; } 
 
-        /* --- Botão Principal (Propulsor de Plasma) --- */
         .carousel-nav { margin-top: 35px; text-align: center; }
         #visitLink {
             background: var(--energy-gradient);
@@ -231,19 +209,13 @@
             padding: 16px 50px; border-radius: 50px;
             font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
             text-decoration: none; display: inline-block;
-            /* Brilho intenso no botão */
             box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
             transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-        #visitLink::after {
-            content: ''; position: absolute; top: -50%; left: -60%; width: 20%; height: 200%;
-            background: rgba(255,255,255,0.4); transform: rotate(25deg); transition: 0.5s;
-        }
-        #visitLink:hover::after { left: 130%; }
         #visitLink:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(249, 115, 22, 0.8); filter: brightness(1.2); }
 
         footer.footer { text-align: center; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); margin-top: 50px; }
-        @keyframes pulseIcon { 0%, 100% { box-shadow: inset 0 0 15px rgba(249, 115, 22, 0.2), 0 0 20px rgba(249, 115, 22, 0.1); } 50% { box-shadow: inset 0 0 25px rgba(249, 115, 22, 0.4), 0 0 35px rgba(249, 115, 22, 0.3); } }
+        @keyframes pulseIcon { 0%, 100% { box-shadow: inset 0 0 15px rgba(249, 115, 22, 0.2), 0 0 25px rgba(249, 115, 22, 0.4); } 50% { box-shadow: inset 0 0 25px rgba(249, 115, 22, 0.4), 0 0 35px rgba(249, 115, 22, 0.7); } }
     </style>
 </head>
 <body>
@@ -290,7 +262,7 @@
         </div>
     </div>
 
-    <footer class="footer">© 2025 André R. dos Santos | Interface v2.5</footer>
+    <footer class="footer">© 2025 André R. dos Santos | Interface v2.6</footer>
 
     <script>
         const links = document.querySelectorAll('.link'); const popup = document.getElementById('popup'); const overlay = document.getElementById('overlay'); const carouselTrack = document.getElementById('carouselTrack'); const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const visitBtn = document.getElementById('visitLink'); const themeToggle = document.getElementById('themeToggle'); let currentSlide = 0; const linkData = []; let totalSlides = 0;
@@ -298,7 +270,7 @@
         function createCardHTML(data) {
             let promptHtml = '', visitText = 'Acessar';
             if (data.type === 'whatsapp') { promptHtml = `<div class="whatsapp-prompt"><i class="fab fa-whatsapp"></i> Iniciar Transmissão</div>`; visitText = 'Conectar via WhatsApp'; } 
-            else if (data.type === 'web') { promptHtml = `<div class="whatsapp-prompt" style="color:var(--neon-blue) !important; border-color:var(--neon-blue);"><i class="fas fa-external-link-alt" style="text-shadow: 0 0 5px var(--neon-blue);"></i> Navegar no Portal</div>`; visitText = 'Acessar Portal'; }
+            else if (data.type === 'web') { promptHtml = `<div class="whatsapp-prompt" style="color:var(--text-high-contrast) !important; background:#EFF6FF; border-color:var(--neon-blue);"><i class="fas fa-external-link-alt" style="color:var(--neon-blue);"></i> Navegar no Portal</div>`; visitText = 'Acessar Portal'; }
             return `<div class="card-item"><div class="card"><div class="card-icon-wrapper"><i class="${data.icon} card-icon"></i></div><h3 class="card-title">${data.title}</h3><p class="card-description">${data.text}</p><div class="card-footer">${promptHtml}</div></div></div>`;
         }
         function renderCarousel() { carouselTrack.innerHTML = linkData.map(createCardHTML).join(''); }
