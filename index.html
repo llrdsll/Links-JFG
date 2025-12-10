@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinksJFG Futurista | JFG Metais</title>
+    <title>LinksJFG Futurista</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         /* 🎨 Váriaveis Futuristas */
         :root {
@@ -17,14 +17,13 @@
             /* Gradiente de energia para botões */
             --energy-gradient: linear-gradient(135deg, var(--neon-orange), #ef4444);
             
-            --card-glass-bg: rgba(20, 20, 30, 0.85); /* Vidro escuro mais opaco */
+            --card-glass-bg: rgba(20, 20, 30, 0.75); /* Vidro escuro */
             --card-glow: 0 0 25px rgba(249, 115, 22, 0.4), inset 0 0 2px rgba(255,255,255,0.1); /* Brilho Neon */
         }
 
         body {
             font-family: 'Inter', sans-serif;
             margin: 0; padding: 0;
-            /* Utilize suas imagens 'escuroo.jpg' e 'clara.jpg' */
             background: url('escuroo.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #E5E7EB;
@@ -71,9 +70,8 @@
             width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
             margin-bottom: 20px; 
             border: 3px solid var(--neon-orange);
+            /* Avatar brilhando */
             box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
-            /* Otimização de Imagem */
-            content-visibility: auto; 
         }
         
         h1 { font-size: 2rem; margin-bottom: 8px; font-weight: 800; letter-spacing: -1px; color: #fff; text-transform: uppercase; }
@@ -117,7 +115,7 @@
 
         .popup-overlay {
             display: none; position: fixed; inset: 0;
-            background: rgba(0, 0, 0, 0.85); /* Fundo ainda mais escuro */
+            background: rgba(0, 0, 0, 0.8); /* Fundo bem escuro */
             backdrop-filter: blur(10px); z-index: 1000;
         }
         
@@ -141,34 +139,27 @@
         }
         .close-btn:hover { background: var(--neon-orange); box-shadow: 0 0 15px var(--neon-orange); transform: rotate(90deg); }
 
-        .carousel-container { 
-            flex-grow: 1; overflow: hidden; /* Mudança: Oculta overflow para swipe */
-            position: relative; perspective: 1000px;
-            /* Adicionado padding para que as setas não se sobreponham ao card */
-            padding: 0 30px; 
-        }
-        .carousel-track { 
-            display: flex; height: 100%;
-            /* Otimização de Performance */
-            will-change: transform; 
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); 
-        }
+        .carousel-container { flex-grow: 1; overflow: visible; position: relative; perspective: 1000px; }
+        .carousel-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .card-item { min-width: 100%; padding: 10px; box-sizing: border-box; display: flex; justify-content: center; }
 
         /* ✨ O NOVO CARD FUTURISTA ✨ */
         .card {
+            /* Fundo de vidro escuro */
             background: var(--card-glass-bg) !important;
+            /* Desfoque extremo para efeito de vidro fosco */
             backdrop-filter: blur(25px) saturate(150%); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            
+            /* REMOVIDA A BORDA SÓLIDA. Adicionado brilho neon nas bordas. */
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Borda muito sutil para definição */
             box-shadow: var(--card-glow);
-            color: #FFFFFF !important;
+            
+            color: #FFFFFF !important; /* Texto sempre branco */
             border-radius: 30px;
             padding: 40px 30px;
             width: 100%; max-width: 340px;
             display: flex; flex-direction: column; align-items: center; text-align: center;
             position: relative; overflow: hidden;
-            /* Garante que o conteúdo do card esteja acessível */
-            touch-action: pan-y; 
         }
 
         /* Efeito de luz no topo do card */
@@ -181,16 +172,19 @@
         /* Ícone flutuante e brilhante */
         .card-icon-wrapper {
             width: 90px; height: 90px;
+            /* Fundo transparente, apenas um anel de luz */
             background: transparent;
             border: 2px solid rgba(249, 115, 22, 0.3);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 25px;
+            /* Brilho interno e externo */
             box-shadow: inset 0 0 15px rgba(249, 115, 22, 0.2), 0 0 20px rgba(249, 115, 22, 0.1);
             animation: pulseIcon 3s infinite ease-in-out;
         }
         .card-icon { 
             font-size: 2.8rem; color: var(--neon-orange); 
+            /* O ícone em si brilha como luz */
             text-shadow: 0 0 15px rgba(249, 115, 22, 0.8);
         }
 
@@ -222,22 +216,12 @@
             background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(249, 115, 22, 0.3);
             color: var(--neon-orange); cursor: pointer; z-index: 10; font-size: 1.2rem;
             backdrop-filter: blur(5px); transition: all 0.3s ease;
-            /* Mudança de posição para acomodar o padding do carrossel */
-            margin: 0 -5px; 
         }
         .nav-btn:hover { 
             background: var(--neon-orange); color: #fff; 
             box-shadow: 0 0 25px var(--neon-orange); border-color: transparent;
         }
-        /* Posições relativas ao padding do carousel-container */
-        #prevBtn { left: 0px; } 
-        #nextBtn { right: 0px; } 
-
-        /* Oculta botões em telas muito pequenas (onde o swipe é mais intuitivo) */
-        @media (max-width: 450px) {
-            .nav-btn { display: none; }
-            .carousel-container { padding: 0 10px; } /* Ajusta padding se botões sumirem */
-        }
+        #prevBtn { left: -20px; } #nextBtn { right: -20px; } 
 
         /* --- Botão Principal (Propulsor de Plasma) --- */
         .carousel-nav { margin-top: 35px; text-align: center; }
@@ -247,6 +231,7 @@
             padding: 16px 50px; border-radius: 50px;
             font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
             text-decoration: none; display: inline-block;
+            /* Brilho intenso no botão */
             box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
             transition: all 0.3s ease; position: relative; overflow: hidden;
         }
@@ -262,273 +247,70 @@
     </style>
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" aria-label="Alternar Tema Claro/Escuro">🌙</button>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌙</button>
 
     <div class="wrapper">
         <div class="container">
-            <img class="avatar" src="avatar.jpg" alt="Avatar JFG Metais" loading="lazy" />
+            <img class="avatar" src="avatar.jpg" alt="Avatar" />
             <h1>JFG Metais</h1>
             <p>Soluções avançadas em fixação para o futuro da construção.</p>
 
-            <a class="link" data-title="Site Oficial" data-text="Explore nosso portfólio digital completo e solicite orçamentos via nossa plataforma." data-url="https://jfgmetais.com.br/" data-icon="fas fa-globe" data-contact-type="web" data-index="0" role="button" aria-expanded="false">
+            <a class="link" data-title="Site Oficial" data-text="Explore nosso portfólio digital completo e solicite orçamentos via nossa plataforma." data-url="https://jfgmetais.com.br/" data-icon="fas fa-globe" data-contact-type="web" data-index="0">
                 <i class="fas fa-globe"></i> Site
             </a>
-            <a class="link" data-title="Jessé Ferreira" data-text="Administrativo. Conecte-se para alinhar processos internos e documentação estratégica." data-url="http://wa.me/5511942147315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="1" role="button" aria-expanded="false">
+            <a class="link" data-title="Jessé Ferreira" data-text="Administrativo. Conecte-se para alinhar processos internos e documentação estratégica." data-url="http://wa.me/5511942147315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="1">
                 <i class="fab fa-whatsapp"></i> Administrativo
             </a>
-            <a class="link" data-title="Duana Kelly" data-text="Central de Vendas. Cotações em tempo real e rastreamento de pedidos." data-url="http://wa.me/5511974177315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="2" role="button" aria-expanded="false">
+            <a class="link" data-title="Duana Kelly" data-text="Central de Vendas. Cotações em tempo real e rastreamento de pedidos." data-url="http://wa.me/5511974177315" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="2">
                 <i class="fab fa-whatsapp"></i> Vendas
             </a>
-            <a class="link" data-title="André Santos" data-text="Negociações e Orçamentos. Canal direto para condições comerciais exclusivas." data-url="https://wa.me/5511932875887" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="3" role="button" aria-expanded="false">
+            <a class="link" data-title="André Santos" data-text="Negociações e Orçamentos. Canal direto para condições comerciais exclusivas." data-url="https://wa.me/5511932875887" data-icon="fab fa-whatsapp" data-contact-type="whatsapp" data-index="3">
                 <i class="fab fa-whatsapp"></i> Orçamentos
             </a>
-            <a class="link" data-title="Róbson Eugênio" data-text="Operações Logísticas. Informações precisas sobre rotas, estoque e conferência." data-url="http://wa.me/5511998629882" data-icon="fas fa-truck-fast" data-contact-type="whatsapp" data-index="4" role="button" aria-expanded="false">
+            <a class="link" data-title="Róbson Eugênio" data-text="Operações Logísticas. Informações precisas sobre rotas, estoque e conferência." data-url="http://wa.me/5511998629882" data-icon="fas fa-truck-fast" data-contact-type="whatsapp" data-index="4">
                 <i class="fas fa-truck-fast"></i> Logístico
             </a>
         </div>
     </div>
 
     <div class="popup-overlay" id="overlay"></div>
-    <div class="popup" id="popup" aria-modal="true" role="dialog" aria-labelledby="popupTitle">
+    <div class="popup" id="popup">
         <div class="popup-header">
-            <button class="close-btn" onclick="closePopup()" aria-label="Fechar Janela de Detalhes">
+            <button class="close-btn" onclick="closePopup()">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="carousel-container" id="carouselContainer" aria-live="polite">
+        <div class="carousel-container">
             <div class="carousel-track" id="carouselTrack"></div>
-            <button class="nav-btn" id="prevBtn" aria-label="Card Anterior" title="Anterior"><i class="fas fa-chevron-left"></i></button>
-            <button class="nav-btn" id="nextBtn" aria-label="Próximo Card" title="Próximo"><i class="fas fa-chevron-right"></i></button>
+            <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
         </div>
         <div class="carousel-nav">
             <a id="visitLink" href="#" target="_blank">Inicializar</a>
         </div>
     </div>
 
-    <footer class="footer">© 2025 André R. dos Santos | Interface v2.5 (Otimizada)</footer>
+    <footer class="footer">© 2025 André R. dos Santos | Interface v2.5</footer>
 
     <script>
-        const links = document.querySelectorAll('.link');
-        const popup = document.getElementById('popup');
-        const overlay = document.getElementById('overlay');
-        const carouselTrack = document.getElementById('carouselTrack');
-        const carouselContainer = document.getElementById('carouselContainer');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const visitBtn = document.getElementById('visitLink');
-        const themeToggle = document.getElementById('themeToggle');
-
-        let currentSlide = 0;
-        const linkData = [];
-        let totalSlides = 0;
-
-        // Variáveis para funcionalidade de Swipe/Toque
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const minSwipeDistance = 50; // Distância mínima para registrar um swipe
-
-        // 1. Coleta os dados de linkData
-        links.forEach((link, index) => {
-            linkData.push({
-                title: link.dataset.title,
-                text: link.dataset.text,
-                url: link.dataset.url,
-                icon: link.dataset.icon || link.querySelector('i').className,
-                type: link.dataset.contactType,
-                index: index
-            });
-            // Adiciona ID para acessibilidade se necessário, mas não é estritamente obrigatório aqui
-            link.id = `link-${index}`;
-        });
-        totalSlides = linkData.length;
-
-        // 2. Cria a estrutura HTML dos Cards
+        const links = document.querySelectorAll('.link'); const popup = document.getElementById('popup'); const overlay = document.getElementById('overlay'); const carouselTrack = document.getElementById('carouselTrack'); const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const visitBtn = document.getElementById('visitLink'); const themeToggle = document.getElementById('themeToggle'); let currentSlide = 0; const linkData = []; let totalSlides = 0;
+        links.forEach((link, index) => { linkData.push({ title: link.dataset.title, text: link.dataset.text, url: link.dataset.url, icon: link.dataset.icon || link.querySelector('i').className, type: link.dataset.contactType, index: index }); }); totalSlides = linkData.length;
         function createCardHTML(data) {
             let promptHtml = '', visitText = 'Acessar';
-            let titleId = `card-title-${data.index}`;
-
-            if (data.type === 'whatsapp') { 
-                promptHtml = `<div class="whatsapp-prompt"><i class="fab fa-whatsapp"></i> Iniciar Transmissão</div>`; 
-                visitText = 'Conectar via WhatsApp'; 
-            } else if (data.type === 'web') { 
-                promptHtml = `<div class="whatsapp-prompt" style="color:var(--neon-blue) !important; border-color:var(--neon-blue);"><i class="fas fa-external-link-alt" style="text-shadow: 0 0 5px var(--neon-blue);"></i> Navegar no Portal</div>`; 
-                visitText = 'Acessar Portal'; 
-            }
-
-            // Melhoria A11Y: Adicionado ID no título do card
-            return `
-                <div class="card-item" role="group" aria-roledescription="slide" aria-label="${data.index + 1} de ${totalSlides}">
-                    <div class="card">
-                        <div class="card-icon-wrapper"><i class="${data.icon} card-icon"></i></div>
-                        <h3 class="card-title" id="${titleId}">${data.title}</h3>
-                        <p class="card-description">${data.text}</p>
-                        <div class="card-footer">${promptHtml}</div>
-                    </div>
-                </div>`;
+            if (data.type === 'whatsapp') { promptHtml = `<div class="whatsapp-prompt"><i class="fab fa-whatsapp"></i> Iniciar Transmissão</div>`; visitText = 'Conectar via WhatsApp'; } 
+            else if (data.type === 'web') { promptHtml = `<div class="whatsapp-prompt" style="color:var(--neon-blue) !important; border-color:var(--neon-blue);"><i class="fas fa-external-link-alt" style="text-shadow: 0 0 5px var(--neon-blue);"></i> Navegar no Portal</div>`; visitText = 'Acessar Portal'; }
+            return `<div class="card-item"><div class="card"><div class="card-icon-wrapper"><i class="${data.icon} card-icon"></i></div><h3 class="card-title">${data.title}</h3><p class="card-description">${data.text}</p><div class="card-footer">${promptHtml}</div></div></div>`;
         }
-        
-        // 3. Renderiza o Carrossel
         function renderCarousel() { carouselTrack.innerHTML = linkData.map(createCardHTML).join(''); }
-
-        // 4. Move o Carrossel para o Slide
-        function moveToSlide(index) {
-            // Garante que o índice esteja dentro dos limites
-            index = Math.max(0, Math.min(totalSlides - 1, index));
-            currentSlide = index;
-            // Usa o transform CSS
-            carouselTrack.style.transform = `translateX(${-currentSlide * 100}%)`;
-            updateNavButtons();
-            updateVisitLink();
-            
-            // Acessibilidade: Move o foco para o novo card (opcional, mas bom para leitores de tela)
-            const currentCard = carouselTrack.querySelector(`.card-item:nth-child(${currentSlide + 1}) .card`);
-            if (currentCard) {
-                currentCard.focus();
-            }
-        }
-
-        // 5. Atualiza os Botões de Navegação (Setas)
-        function updateNavButtons() {
-            // Lógica mais clara para desativar botões
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === totalSlides - 1;
-            
-            // Oculta/mostra os botões suavemente
-            prevBtn.style.opacity = currentSlide === 0 ? '0' : '1';
-            nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0' : '1';
-            prevBtn.style.pointerEvents = currentSlide === 0 ? 'none' : 'auto';
-            nextBtn.style.pointerEvents = currentSlide === totalSlides - 1 ? 'none' : 'auto';
-        }
-
-        // 6. Atualiza o Link Principal de Ação
-        function updateVisitLink() {
-            const currentData = linkData[currentSlide];
-            if (currentData) {
-                visitBtn.href = currentData.url;
-                visitBtn.style.display = 'inline-block';
-                
-                // Atualiza o texto do botão principal
-                if (currentData.type === 'whatsapp') {
-                    visitBtn.textContent = 'Conectar via WhatsApp';
-                } else if (currentData.type === 'web') {
-                    visitBtn.textContent = 'Acessar Portal';
-                } else {
-                    visitBtn.textContent = 'Inicializar Link';
-                }
-            } else {
-                visitBtn.style.display = 'none';
-            }
-        }
-
-        // 7. Event Handlers para Abertura do Pop-up
-        links.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Acessibilidade: Marca o link como expandido
-                link.setAttribute('aria-expanded', 'true'); 
-                
-                if (carouselTrack.innerHTML === '') renderCarousel();
-                
-                // Abre no slide correspondente ao link clicado
-                moveToSlide(parseInt(link.dataset.index));
-                
-                popup.classList.add('show');
-                overlay.style.display = 'block';
-            });
-        });
-
-        // 8. Event Handlers para Navegação com Setas
-        prevBtn.addEventListener('click', () => { if (currentSlide > 0) moveToSlide(currentSlide - 1); });
-        nextBtn.addEventListener('click', () => { if (currentSlide < totalSlides - 1) moveToSlide(currentSlide + 1); });
-
-        // 9. Funcionalidade de Fechar Pop-up
-        function closePopup() { 
-            popup.classList.remove('show'); 
-            overlay.style.display = 'none'; // Mudar para display: none imediatamente para evitar cliques em falso
-            
-            // Acessibilidade: Redefine o estado expandido dos links
-            links.forEach(link => link.setAttribute('aria-expanded', 'false'));
-            
-            // Se o foco estava no popup, tenta retornar ao último link clicado (melhoria UX)
-            // const lastClickedLink = document.querySelector(`[data-index="${currentSlide}"][aria-expanded="false"]`);
-            // if (lastClickedLink) lastClickedLink.focus();
-        }
-
+        function moveToSlide(index) { currentSlide = index; carouselTrack.style.transform = `translateX(${-currentSlide * 100}%)`; updateNavButtons(); updateVisitLink(); }
+        function updateNavButtons() { prevBtn.disabled = currentSlide === 0; nextBtn.disabled = currentSlide === totalSlides - 1; prevBtn.style.opacity = currentSlide === 0 ? '0' : '1'; nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0' : '1'; prevBtn.style.pointerEvents = currentSlide === 0 ? 'none' : 'auto'; nextBtn.style.pointerEvents = currentSlide === totalSlides - 1 ? 'none' : 'auto'; }
+        function updateVisitLink() { const currentData = linkData[currentSlide]; if (currentData) { visitBtn.href = currentData.url; visitBtn.style.display = 'inline-block'; if (currentData.type === 'whatsapp') visitBtn.textContent = 'Conectar via WhatsApp'; else if (currentData.type === 'web') visitBtn.textContent = 'Acessar Portal'; else visitBtn.textContent = 'Inicializar Link'; } else { visitBtn.style.display = 'none'; } }
+        links.forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); if (carouselTrack.innerHTML === '') renderCarousel(); moveToSlide(parseInt(link.dataset.index)); popup.classList.add('show'); overlay.style.display = 'block'; }); });
+        prevBtn.addEventListener('click', () => { if (currentSlide > 0) moveToSlide(currentSlide - 1); }); nextBtn.addEventListener('click', () => { if (currentSlide < totalSlides - 1) moveToSlide(currentSlide + 1); });
+        function closePopup() { popup.classList.remove('show'); setTimeout(() => { overlay.style.display = 'none'; }, 300); }
         overlay.addEventListener('click', closePopup);
-        
-        // Permite fechar com a tecla ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && popup.classList.contains('show')) {
-                closePopup();
-            }
-        });
-
-        // 10. Funcionalidade de Tema (Dark/Light)
-        function toggleTheme() { 
-            const isLight = !document.body.classList.contains('light-mode');
-            document.body.classList.toggle('light-mode', isLight);
-            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark'); 
-            themeToggle.setAttribute('aria-label', isLight ? 'Mudar para Tema Escuro' : 'Mudar para Tema Claro');
-        }
-
-        // 11. Implementação de Swipe/Toque (Melhoria UX Mobile)
-        function handleTouchStart(e) {
-            // Registra a posição X inicial
-            touchStartX = e.touches[0].clientX;
-            // Remove a transição suave durante o swipe para evitar lag
-            carouselTrack.style.transition = 'none';
-        }
-
-        function handleTouchMove(e) {
-            touchEndX = e.touches[0].clientX;
-            const diff = touchEndX - touchStartX;
-
-            // Move o track em tempo real durante o deslize
-            // -currentSlide * 100 é a posição base
-            const newPos = (-currentSlide * carouselContainer.offsetWidth) + diff;
-            carouselTrack.style.transform = `translateX(${newPos}px)`;
-        }
-
-        function handleTouchEnd() {
-            // Repõe a transição suave
-            carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
-            const diff = touchEndX - touchStartX;
-
-            // Decide se foi um swipe
-            if (Math.abs(diff) > minSwipeDistance) {
-                if (diff > 0) {
-                    // Swipe para a direita (Ir para slide anterior)
-                    moveToSlide(currentSlide - 1);
-                } else {
-                    // Swipe para a esquerda (Ir para próximo slide)
-                    moveToSlide(currentSlide + 1);
-                }
-            } else {
-                // Não houve swipe suficiente, retorna ao slide atual
-                moveToSlide(currentSlide); 
-            }
-
-            // Reseta variáveis
-            touchStartX = 0;
-            touchEndX = 0;
-        }
-
-        // Adiciona os event listeners de toque APENAS ao container do carrossel
-        carouselContainer.addEventListener('touchstart', handleTouchStart);
-        carouselContainer.addEventListener('touchmove', handleTouchMove);
-        carouselContainer.addEventListener('touchend', handleTouchEnd);
-
-
-        // 12. Inicialização
-        window.onload = () => { 
-            const saved = localStorage.getItem('theme'); 
-            let isLight = saved === 'light'; 
-            if (isLight) document.body.classList.add('light-mode'); 
-            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙'; 
-            themeToggle.setAttribute('aria-label', isLight ? 'Mudar para Tema Escuro' : 'Mudar para Tema Claro');
-            renderCarousel(); 
-        }
+        function toggleTheme() { document.body.classList.toggle('light-mode'); const isLight = document.body.classList.contains('light-mode'); themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙'; localStorage.setItem('theme', isLight ? 'light' : 'dark'); }
+        window.onload = () => { const saved = localStorage.getItem('theme'); let isLight = saved === 'light'; if (isLight) document.body.classList.add('light-mode'); themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '🌙'; renderCarousel(); }
     </script>
 </body>
 </html>
